@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage Salle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <select id="room-select">
+                <option value="oceane">Salle Océane - MJH</option>
+                <option value="newyork">Salle New York - MCD</option>
+            </select>
+        </div>
+        <div class="header-right">
+            <img src="assets/logo.png" alt="Logo">
+        </div>
+    </header>
+    <div class="separator"></div>
+    <main>
+        <section class="current-status">
+            <div id="status-box" class="status libre">Libre</div>
+
+            <div class="event-info">
+                <h2 id="event-title">Prochain évènement</h2>
+                <h3 id="event-name">Réunion de Projet</h3>
+                <p id="event-time">13h30 - 15h00</p>
+            </div>
+
+            <div class="current-time">
+                <p id="date-now">Vendredi 4 Juillet</p>
+                <p id="time-now">11h36</p>
+            </div>
+        </section>
+
+        <div class="vertical-separator"></div>
+
+        <section class="next-events">
+            <h3>Prochains évènements</h3>
+            <ul id="event-list">
+                <li><strong>PS Technique</strong> — 15h30 - 16h00</li>
+                <li><strong>Colloque CCDSE</strong> — 16h30 - 17h30</li>
+                <li><strong>Colloque Arc-en-ciel</strong> — 18h00 - 18h30</li>
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
