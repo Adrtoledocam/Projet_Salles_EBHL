@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": "284166",
+      "location": "Salle Océane",
+      "title": "PS Technique",
+      "organizerFullname": "JOTTERAND Nicolas",
+      "start": "2025-07-17T09:00:00+0200",
+      "end": "2025-07-17T10:00:00+0200"
+    },
+    {
+      "id": "284167",
+      "location": "Salle Océane",
+      "title": "Atelier Santé",
+      "organizerFullname": "Dr. Muller",
+      "start": "2025-07-17T11:00:00+0200",
+      "end": "2025-07-17T12:00:00+0200"
+    },
+    {
+      "id": "284168",
+      "location": "Salle Océane",
+      "title": "Conférence RH",
+      "organizerFullname": "Marie Claire",
+      "start": "2025-07-17T14:00:00+0200",
+      "end": "2025-07-17T15:30:00+0200"
+    },
+    {
+      "id": "284169",
+      "location": "Salle New York",
+      "title": "Briefing Sécurité",
+      "organizerFullname": "Jean Dupont",
+      "start": "2025-07-17T08:30:00+0200",
+      "end": "2025-07-17T09:30:00+0200"
+    },
+    {
+      "id": "284170",
+      "location": "Salle New York",
+      "title": "Formation Équipe",
+      "organizerFullname": "Anne Robert",
+      "start": "2025-07-17T10:00:00+0200",
+      "end": "2025-07-17T11:00:00+0200"
+    },
+    {
+      "id": "284171",
+      "location": "Salle New York",
+      "title": "Atelier Communication",
+      "organizerFullname": "Lucas B.",
+      "start": "2025-07-17T16:00:00+0200",
+      "end": "2025-07-17T17:00:00+0200"
+    }
+  ]
+}
