@@ -1,5 +1,25 @@
 // script.js
 
+//Change theme based on room selection
+document.getElementById('room-select').addEventListener('change', function () {
+    const room = this.value;
+    const body = document.body;
+    const logo = document.querySelector('.header-right img');
+
+    // Réinitialise toutes les classes de thème
+    body.classList.remove('theme-default', 'theme-pga', 'theme-cdg');
+
+    if (room === 'conference') {
+        body.classList.add('theme-pga');
+        logo.src = 'assets/logoPGA.png';
+    } else if (room === 'willy') {
+        body.classList.add('theme-cdg');
+        logo.src = 'assets/logoCDG.png';
+    } else {
+        body.classList.add('theme-default');
+        logo.src = 'assets/logo.png';
+    }
+});
 
 //Date and Time clock 
 function updateDateTime() {
