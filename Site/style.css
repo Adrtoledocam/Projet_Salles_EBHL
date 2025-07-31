@@ -126,3 +126,24 @@ main {
     appearance: none;
     font-size: 3em;
 }
+
+/* EBHL */
+body.theme-default .separator,
+body.theme-default .vertical-separator,
+body.theme-default #event-list li {
+    background-color: orange;
+}
+
+/* PGA */
+body.theme-pga .separator,
+body.theme-pga .vertical-separator,
+body.theme-pga #event-list li {
+    background-color: #003595;
+}
+
+/*  CDG  */
+body.theme-cdg .separator,
+body.theme-cdg .vertical-separator,
+body.theme-cdg #event-list li {
+    background-color: #D20042;
+}
