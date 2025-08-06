@@ -1,0 +1,164 @@
+/* Inter Font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* Color variables */
+:root {
+  --pga-blue: #3f65ae;
+  --eh-green: #27955a;
+  --eh-red: #d4583b;
+  --eh-gray: #414141;
+  --eh-white: #f4f4f8;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+
+  /* Désactivation de la sélection du texte */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h1,
+h2,
+p {
+  color: var(--eh-gray);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+body {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: var(--eh-white);
+  height: 100vh;
+}
+
+.header .header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .selector-info {
+  align-items: center;
+  display: flex;
+}
+
+.header .header-info img {
+  width: 200px;
+  height: 120px;
+}
+
+.header .line {
+  border-bottom: 7px solid var(--pga-blue);
+  width: 82.5%;
+}
+
+.header .selector #calendar-select {
+  border: none;
+  background: transparent;
+  appearance: none;
+  font-size: 3em;
+  font-weight: 500;
+  color: var(--eh-gray);
+}
+
+.bottom {
+  display: flex;
+  font-size: 1.125rem;
+}
+
+.bottom .main {
+  width: 62.5%;
+}
+
+.bottom .main #status {
+  color: var(--eh-white);
+  font-size: 4rem;
+  padding: 20px 20px 20px 30px;
+}
+
+.bottom .main .info-main h2 {
+  font-size: 4rem;
+}
+
+.bottom .main .info-main p {
+  font-size: 2rem;
+}
+
+.bottom .main .info-main .first-event {
+  line-height: 25px;
+}
+
+.bottom .main .info-main .first-event img {
+  width: 25px;
+}
+
+.libre {
+  background-color: var(--eh-green);
+}
+
+.occupee {
+  background-color: var(--eh-red);
+}
+
+.bottom .main .info-main {
+  text-align: center;
+}
+
+.bottom .middle {
+  width: 2.5%;
+}
+
+/* Séparation verticale
+.bottom .middle .line {
+  height: 100%;
+  margin: 50%;
+  border-left: 7px solid var(--pga-blue);
+} */
+
+.bottom .events {
+  width: 35%;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+
+.bottom .events .event {
+  padding: 10px 0px 10px 30px;
+  margin: 0px 20px 20px 20px;
+  background-color: var(--pga-blue);
+  border-radius: 10px;
+}
+
+.bottom .events .event p {
+  text-align: left;
+  font-weight: bold;
+  color: var(--eh-white);
+}
+
+.bottom .events .event img {
+  width: 25px;
+}
+
+#clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  font-size: 4rem;
+  font-weight: 500;
+  color: rgb(65, 65, 65);
+}
