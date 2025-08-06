@@ -37,7 +37,7 @@ function loadCalendar(room) {
 
       infoMain.innerHTML = `
               <h2>${
-                isInProgress ? "Évènement en cours" : "Prochain évènement"
+                isInProgress ? "Événement en cours" : "Prochain événement"
               }</h2>
               <div class="first-event">
               <p>
@@ -67,7 +67,7 @@ function loadCalendar(room) {
             `;
 
       if (events.length > 1) {
-        eventsContainer.innerHTML = "<h2>Évènements à venir</h2>";
+        eventsContainer.innerHTML = "<h2>Événements à venir</h2>";
         events.slice(1).forEach((event) => {
           const row = document.createElement("div");
           row.classList.add("event");
