@@ -1,7 +1,7 @@
 /* Inter Font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-/* Color variables */
+/* Variables pour les couleurs */
 :root {
   --pga-blue: #3f65ae;
   --eh-green: #27955a;
@@ -13,12 +13,13 @@
 * {
   font-family: "Inter", sans-serif;
 
-  /* Désactivation de la sélection du texte */
+  /* Désactivation de la sélection du texte (différents navigateurs) */
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
+/* Style général pour les titres et textes */
 h1,
 h2,
 p {
@@ -38,6 +39,7 @@ p {
   font-size: 1.5rem;
 }
 
+/* Corps de la page */
 body {
   border: 0;
   padding: 0;
@@ -46,6 +48,7 @@ body {
   height: 100vh;
 }
 
+/* Header de la page */
 .header .header-info {
   display: flex;
   align-items: center;
@@ -76,11 +79,13 @@ body {
   color: var(--eh-gray);
 }
 
+/* Bas de la page */
 .bottom {
   display: flex;
   font-size: 1.125rem;
 }
 
+/* Côté gauche de la page avec l'information de l'événement en grand */
 .bottom .main {
   width: 62.5%;
 }
@@ -105,6 +110,7 @@ body {
 
 .bottom .main .info-main .first-event img {
   width: 25px;
+  padding-right: 10px;
 }
 
 .libre {
@@ -119,6 +125,7 @@ body {
   text-align: center;
 }
 
+/* Séparation entre le côté gauche et droit de la page */
 .bottom .middle {
   width: 2.5%;
 }
@@ -130,6 +137,7 @@ body {
   border-left: 7px solid var(--pga-blue);
 } */
 
+/* Côté gauche de la page avec les événements écrits en plus petit */
 .bottom .events {
   width: 35%;
   text-align: center;
@@ -149,10 +157,15 @@ body {
   color: var(--eh-white);
 }
 
-.bottom .events .event img {
+/* Style des icônes à côté des informations de l'événement */
+.bottom .events .event img,
+.bottom .main .info-main .first-event img {
   width: 25px;
+  padding-right: 10px;
+  margin-right: 5px;
 }
 
+/* Style de l'heure affichée en haut à droite */
 #clock {
   display: flex;
   justify-content: center;
