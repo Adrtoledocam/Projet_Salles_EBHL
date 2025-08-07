@@ -67,7 +67,7 @@ body {
 
 .header .line {
   border-bottom: 7px solid var(--pga-blue);
-  width: 82.5%;
+  width: 100%;
 }
 
 .header .selector #calendar-select {
@@ -130,12 +130,11 @@ body {
   width: 2.5%;
 }
 
-/* Séparation verticale
 .bottom .middle .line {
   height: 100%;
-  margin: 50%;
+  margin: 70%;
   border-left: 7px solid var(--pga-blue);
-} */
+}
 
 /* Côté gauche de la page avec les événements écrits en plus petit */
 .bottom .events {
