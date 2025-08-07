@@ -4,6 +4,7 @@ const select = document.getElementById("calendar-select");
 const eventStatus = document.getElementById("status");
 const clock = document.getElementById("clock");
 
+// Mise à jour de l'heure et rafraîchissement de la page chaque minutes
 setInterval(() => {
   let date = new Date();
   clock.innerHTML = date.toLocaleTimeString("fr-FR", {
@@ -11,13 +12,13 @@ setInterval(() => {
     minute: "2-digit",
     hour12: false,
   });
-}, 1000);
+}, 2);
 
 function loadCalendar(room) {
-  // Appel de l'API pour récupérer les événements de la salle sélectionnée
-  fetch(`/api/calendar/${room}`)
-    .then((res) => res.json())
-    .then((events) => {
+  axios
+    .get(`/api/calendar/${room}`)
+    .then((res) => {
+      const events = res.data;
       if (events.length === 0) {
         infoMain.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
         eventsContainer.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
@@ -35,70 +36,57 @@ function loadCalendar(room) {
       eventStatus.textContent = isInProgress ? "Occupée" : "Libre";
       eventStatus.className = isInProgress ? "occupee" : "libre";
 
-      // Affichage de l'événement en cours ou du prochain événement
       infoMain.innerHTML = `
-              <h2>${
-                isInProgress ? "Événement en cours" : "Prochain événement"
-              }</h2>
-              <div class="first-event">
-              <p>
-              <img
-              src="resources/images/calendrier-b-64.png"
-              alt="Logo PGA avec fond transparent"
-              draggable="false"
-              />
-                ${first.summary || ""}</p>
-              <p>
-              <img
-              src="resources/images/horloge-b-64.png"
-              alt="Logo PGA avec fond transparent"
-              draggable="false"
-              />  
-                ${start.toLocaleDateString([], {
-                  day: "2-digit",
-                  month: "2-digit",
-                })}  ${start.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })} - ${end.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })}</p>
-            </div>
-            `;
+        <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
+        <div class="first-event">
+          <p>
+            <img src="resources/images/calendrier-b-64.png" alt="" draggable="false" />
+            ${first.summary || ""}
+          </p>
+          <p>
+            <img src="resources/images/horloge-b-64.png" alt="" draggable="false" />
+            ${start.toLocaleDateString([], {
+              day: "2-digit",
+              month: "2-digit",
+            })}  
+            ${start.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })} - 
+            ${end.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </p>
+        </div>
+      `;
 
-      // Affichage du reste des événements futurs
       if (events.length > 1) {
         eventsContainer.innerHTML = "<h2>Événements à venir</h2>";
         events.slice(1).forEach((event) => {
           const row = document.createElement("div");
           row.classList.add("event");
           row.innerHTML = `
-                  <p>
-              <img
-              src="resources/images/calendrier-w-64.png"
-              alt="Logo PGA avec fond transparent"
-              draggable="false"
-              />
-
-                    ${event.summary || ""}</p>
-                  <p>
-              <img
-              src="resources/images/horloge-w-64.png"
-              alt="Logo PGA avec fond transparent"
-              draggable="false"
-              />  
-                    ${new Date(event.start).toLocaleDateString("fr-FR", {
-                      day: "2-digit",
-                      month: "2-digit",
-                    })} ${new Date(event.start).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })} - ${new Date(event.end).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}</p>
-                `;
+            <p>
+              <img src="resources/images/calendrier-w-64.png" alt="" draggable="false" />
+              ${event.summary || ""}
+            </p>
+            <p>
+              <img src="resources/images/horloge-w-64.png" alt="" draggable="false" />
+              ${new Date(event.start).toLocaleDateString("fr-FR", {
+                day: "2-digit",
+                month: "2-digit",
+              })} 
+              ${new Date(event.start).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })} - 
+              ${new Date(event.end).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
+          `;
           eventsContainer.appendChild(row);
         });
       } else {
@@ -116,3 +104,7 @@ loadCalendar(select.value);
 select.addEventListener("change", () => {
   loadCalendar(select.value);
 });
+
+setInterval(() => {
+  loadCalendar(select.value);
+}, 5000);
