@@ -1,5 +1,5 @@
 const express = require("express");
-const fetchData = require("./server.js");
+const fetchICSData = require("./server.js");
 
 const app = express();
 const PORT = 3000;
@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 app.get("/api/calendar/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const events = await fetchData(id);
+    const events = await fetchICSData(id);
 
     res.json(events.slice(0, 5));
   } catch (error) {

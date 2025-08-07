@@ -20,7 +20,7 @@ const ICS_URLS = {
 };
 
 // Récupération et mise en forme des données via le lien ICS publique
-async function fetchData(id) {
+async function fetchICSData(id) {
   const url = ICS_URLS[id];
 
   if (!url) {
@@ -38,20 +38,24 @@ async function fetchData(id) {
 
     if (e.rrule) {
       if (/annulé/i.test(e.summary)) continue;
-      // Récupération des événements qui se répètent sur les 3 prochains mois
+      // On récupère tous les événement répétitifs d'aujourd'hui et on garde ceux qui ne sont pas encore terminés
+      const searchStart = new Date(now);
+      searchStart.setHours(0, 0, 0, 0);
+
+      const searchEnd = new Date(now.getFullYear(), now.getMonth() + 3);
+      const futureOccurrences = e.rrule.between(searchStart, searchEnd, true);
       const duration = e.end - e.start;
-      const futureOccurrences = e.rrule.between(
-        now,
-        new Date(now.getFullYear(), now.getMonth() + 3),
-        true
-      );
 
       // Envoi des événements répétitifs, dans le tableau des événements
+      // Ne garder que les occurrences dont la fin est > maintenant
       for (const occ of futureOccurrences) {
+        const occEnd = new Date(occ.getTime() + duration);
+        if (occEnd <= now) continue; // déjà terminé, on ignore
+
         results.push({
           summary: e.summary,
           start: occ,
-          end: new Date(occ.getTime() + duration),
+          end: occEnd,
         });
       }
     } else {
@@ -71,4 +75,4 @@ async function fetchData(id) {
   return results;
 }
 
-module.exports = fetchData;
+module.exports = fetchICSData;
