@@ -6,4 +6,5 @@ Afin d’améliorer l’organisation et la communication autour de l’occupatio
 2. Téléchargez [Node.js](https://nodejs.org/fr/download) sur votre machine
 3. Rendez vous dans le répertoire ./projet-salles
 4. Installez les dépendances du projet à l'aide de la commande `npm install`
-5. Profitez du site en vous rendant [ici](http://localhost:3000).
+5. Démarrez l'instance node en local avec la commande `npm run dev`
+6. Profitez du site en vous rendant [ici](http://localhost:3000).
