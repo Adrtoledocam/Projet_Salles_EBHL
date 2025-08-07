@@ -45,7 +45,6 @@ body {
   padding: 0;
   margin: 0;
   background-color: var(--eh-white);
-  height: 100vh;
 }
 
 /* Header de la page */
@@ -101,7 +100,7 @@ body {
 }
 
 .bottom .main .info-main p {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .bottom .main .info-main .first-event {
@@ -109,7 +108,7 @@ body {
 }
 
 .bottom .main .info-main .first-event img {
-  width: 25px;
+  width: 40px;
   padding-right: 10px;
 }
 
@@ -131,7 +130,7 @@ body {
 }
 
 .bottom .middle .line {
-  height: 100%;
+  height: 90%;
   margin: 70%;
   border-left: 7px solid var(--pga-blue);
 }
@@ -157,8 +156,7 @@ body {
 }
 
 /* Style des icônes à côté des informations de l'événement */
-.bottom .events .event img,
-.bottom .main .info-main .first-event img {
+.bottom .events .event img {
   width: 25px;
   padding-right: 10px;
   margin-right: 5px;

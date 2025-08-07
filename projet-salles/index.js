@@ -14,7 +14,7 @@ app.get("/api/calendar/:id", async (req, res) => {
     const id = req.params.id;
     const events = await fetchICSData(id);
 
-    res.json(events.slice(0, 5));
+    res.json(events.slice(0, 4));
   } catch (error) {
     console.error("Erreur lors de la récupération des données", error.message);
     res.status(500).json({ error: error.message });
