@@ -35,6 +35,7 @@ function loadCalendar(room) {
       eventStatus.textContent = isInProgress ? "Occupée" : "Libre";
       eventStatus.className = isInProgress ? "occupee" : "libre";
 
+      // Affichage de l'événement en cours ou du prochain événement
       infoMain.innerHTML = `
               <h2>${
                 isInProgress ? "Événement en cours" : "Prochain événement"
@@ -66,6 +67,7 @@ function loadCalendar(room) {
             </div>
             `;
 
+      // Affichage du reste des événements futurs
       if (events.length > 1) {
         eventsContainer.innerHTML = "<h2>Événements à venir</h2>";
         events.slice(1).forEach((event) => {
