@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>Horaires du jour</title>
     <link rel="stylesheet" href="resources/styles/style.css" />
+    <script type="module" src="resources/scripts/updateRoom.js"></script>
     <script type="module" src="resources/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -72,6 +74,26 @@
       <div class="events"></div>
     </div>
 
+    <!-- Mise à jour de l'URL et des données lors du changement de salle/URL -->
+    <script>
+      const salleId =
+        window.location.pathname.split("/")[1] ||
+        "Salle_PGA_Beau-Site_Vignerons";
+
+      document.getElementById("calendar-select").value = salleId;
+      fetchData(salleId);
+
+      document
+        .getElementById("calendar-select")
+        .addEventListener("change", (e) => {
+          const newSalle = e.target.value;
+          window.location.href = `/${newSalle}`;
+        });
+
+      async function fetchData(id) {
+        const res = await fetch(`/api/calendar/${id}`);
+        const events = await res.json();
+      }
     </script>
   </body>
 </html>
