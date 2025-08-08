@@ -3,11 +3,16 @@
 
 /* Variables pour les couleurs */
 :root {
-  --pga-blue: #3f65ae;
   --eh-green: #27955a;
   --eh-red: #d4583b;
   --eh-gray: #414141;
   --eh-white: #f4f4f8;
+
+  --main-color-pga: #335daa;
+  --main-color-ebhl: #f1ab01;
+  --main-color-cdg: #db3368;
+
+  --main-color: var(--main-color-pga);
 }
 
 * {
@@ -65,7 +70,7 @@ body {
 }
 
 .header .line {
-  border-bottom: 7px solid var(--pga-blue);
+  border-bottom: 7px solid var(--main-color);
   width: 100%;
 }
 
@@ -128,7 +133,7 @@ body {
 .bottom .middle .line {
   height: 90%;
   margin: 70%;
-  border-left: 7px solid var(--pga-blue);
+  border-left: 7px solid var(--main-color);
 }
 
 /* Côté gauche de la page avec les événements écrits en plus petit */
@@ -141,7 +146,7 @@ body {
 .bottom .events .event {
   padding: 10px 0px 10px 30px;
   margin: 0px 20px 20px 20px;
-  background-color: var(--pga-blue);
+  background-color: var(--main-color);
   border-radius: 10px;
 }
 
