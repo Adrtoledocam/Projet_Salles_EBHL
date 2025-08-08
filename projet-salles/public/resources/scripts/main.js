@@ -1,3 +1,5 @@
+import { ICS_URLS } from "/controllers/ics-roomsData.js";
+
 const infoMain = document.querySelector(".info-main");
 const eventsContainer = document.querySelector(".events");
 const select = document.getElementById("calendar-select");
@@ -15,8 +17,9 @@ setInterval(() => {
 }, 2);
 
 function loadCalendar(room) {
+  const site = ICS_URLS[room]?.site || "pga";
   axios
-    .get(`/api/calendar/${room}`)
+    .get(`/api/calendar/${site}/${room}`)
     .then((res) => {
       const events = res.data;
       if (events.length === 0) {
@@ -40,11 +43,11 @@ function loadCalendar(room) {
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
           <p>
-            <img src="resources/images/calendrier-b-64.png" alt="" draggable="false" />
+            <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
             ${first.summary || ""}
           </p>
           <p>
-            <img src="resources/images/horloge-b-64.png" alt="" draggable="false" />
+            <img src="/resources/images/horloge-b-64.png" alt="" draggable="false" />
             ${start.toLocaleDateString([], {
               day: "2-digit",
               month: "2-digit",
@@ -68,11 +71,11 @@ function loadCalendar(room) {
           row.classList.add("event");
           row.innerHTML = `
             <p>
-              <img src="resources/images/calendrier-w-64.png" alt="" draggable="false" />
+              <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
               ${event.summary || ""}
             </p>
             <p>
-              <img src="resources/images/horloge-w-64.png" alt="" draggable="false" />
+              <img src="/resources/images/horloge-w-64.png" alt="" draggable="false" />
               ${new Date(event.start).toLocaleDateString("fr-FR", {
                 day: "2-digit",
                 month: "2-digit",
@@ -99,6 +102,10 @@ function loadCalendar(room) {
     });
 }
 
+const pathParts = window.location.pathname.split("/");
+const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
+
+select.value = salleId;
 loadCalendar(select.value);
 
 select.addEventListener("change", () => {
