@@ -16,6 +16,7 @@ setInterval(() => {
   });
 }, 2);
 
+// Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
   const site = ICS_URLS[room]?.site || "pga";
   axios
@@ -29,12 +30,11 @@ function loadCalendar(room) {
         eventStatus.className = "libre";
         return;
       }
-
-      const first = events[0];
+      const first = events[0]; // Premier événement de la liste
       const now = new Date();
       const start = new Date(first.start);
       const end = new Date(first.end);
-      const isInProgress = now >= start && now <= end;
+      const isInProgress = now >= start && now <= end; // Vérifie si l'événement est en cours
 
       eventStatus.textContent = isInProgress ? "Occupée" : "Libre";
       eventStatus.className = isInProgress ? "occupee" : "libre";
