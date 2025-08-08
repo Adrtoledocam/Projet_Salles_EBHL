@@ -1,10 +1,10 @@
 const ical = require("node-ical");
 const axios = require("axios");
-const ICS_URLS = require("./public/resources/scripts/icsURL.js").ICS_URLS;
+const ICS_URLS = require("./public/controllers/ics-roomsData.js").ICS_URLS;
 
 // Récupération et mise en forme des données via le lien ICS publique
-async function fetchICSData(id) {
-  const url = ICS_URLS[id];
+async function fetchICSData(site, id) {
+  const url = ICS_URLS[id]?.url;
 
   if (!url) {
     throw new Error("ID de salle inconnu");
@@ -19,8 +19,8 @@ async function fetchICSData(id) {
   for (const e of Object.values(data)) {
     if (e.type !== "VEVENT" || !(e.start instanceof Date)) continue;
 
+    if (/annulé/i.test(e.summary)) continue;
     if (e.rrule) {
-      if (/annulé/i.test(e.summary)) continue;
       // On récupère tous les événement répétitifs d'aujourd'hui et on garde ceux qui ne sont pas encore terminés
       const searchStart = new Date(now);
       searchStart.setHours(0, 0, 0, 0);
@@ -42,7 +42,7 @@ async function fetchICSData(id) {
         });
       }
     } else {
-      if (/annulé/i.test(e.summary) || e.end <= now) continue;
+      if (e.end <= now) continue;
 
       results.push({
         summary: e.summary,
