@@ -13,6 +13,7 @@ const frontendRoutes = require("./routes/frontend");
 app.use("/api", apiRoutes);
 app.use("/", frontendRoutes);
 
+// Démarrage de l'application en local
 app.listen(PORT, () => {
   console.log(`✅ http://localhost:${PORT}`);
 });

@@ -1,4 +1,4 @@
-export const ICS_URLS = {
+export const ROOMS_DATA = {
   // Salles - Pôle Grand Âge
   "Salle_PGA_Beau-Site_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/726bb31e016a47dbbb8e399865c4a1d9@eben-hezer.ch/14454d8d84e741e98d21a203e8b339103993903089613600432/calendar.ics",

@@ -2,8 +2,9 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Horaires du jour</title>
+    <title>Eben-Hézer - Occupation des salles</title>
     <link rel="stylesheet" href="/resources/styles/style.css" />
+    <link rel="icon" type="image/png" href="/resources/images/favicon.png" />
     <script type="module" src="/resources/scripts/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
@@ -22,7 +23,7 @@
           <!-- Liste déroulante pour le choix de salle -->
           <div class="selector">
             <select id="calendar-select">
-              <!-- Pôle Grand Âge -->
+              <!-- Salles - Pôle Grand Âge -->
               <option value="Salle_PGA_Beau-Site_Vignerons">
                 Beau-Site - Salle des Vignerons
               </option>
@@ -44,9 +45,9 @@
               <option value="Salle_PGA_Coteau-Muraz_Colloque">
                 Coteau-Muraz - Salle Colloque
               </option>
-              <!-- Eben-Hézer Lausanne -->
+              <!-- Salles - Eben-Hézer Lausanne -->
               <option value="Test_EBHL">Test_EBHL</option>
-              <!-- Cité du Genévrier -->
+              <!-- Salles -  Cité du Genévrier -->
               <option value="Test_CDG">Test_CDG</option>
             </select>
           </div>
@@ -81,20 +82,23 @@
 
     <!-- Mise à jour de l'URL et des données lors du changement de salle/URL -->
     <script type="module">
-      import { ICS_URLS } from "/controllers/ics-roomsData.js";
+      import { ROOMS_DATA } from "/controllers/roomsData.js";
 
+      // Récupération des informations sur le site et le nom de la salle depuis l'URL
       const pathParts = window.location.pathname.split("/");
       const site = pathParts[1] || "pga";
       const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
 
+      // Mise à jour du titre de la salle
       document.getElementById("calendar-select").value = salleId;
       fetchData(site, salleId);
 
+      // Mise à jour de l'URL lors du changement de salle depuis la liste déroulante
       document
         .getElementById("calendar-select")
         .addEventListener("change", (e) => {
           const newSalle = e.target.value;
-          const newSite = ICS_URLS[newSalle]?.site || "pga";
+          const newSite = ROOMS_DATA[newSalle]?.site || "pga";
           window.location.href = `/${newSite}/${newSalle}`;
         });
 
@@ -106,15 +110,19 @@
       const root = document.documentElement;
       const logo = document.getElementById("site-logo");
 
-      if (site === "ebhl") {
-        root.style.setProperty("--main-color", "var(--main-color-ebhl)");
-        logo.src = "/resources/images/ebhl.png";
-      } else if (site === "cdg") {
-        root.style.setProperty("--main-color", "var(--main-color-cdg)");
-        logo.src = "/resources/images/cdg.png";
-      } else {
-        root.style.setProperty("--main-color", "var(--main-color-pga)");
-        logo.src = "/resources/images/pga.png";
+      // Mise à jour du style et du logo en fonction du site
+      switch (site) {
+        case "ebhl":
+          root.style.setProperty("--main-color", "#f1ab01");
+          logo.src = "/resources/images/ebhl.png";
+          break;
+        case "cdg":
+          root.style.setProperty("--main-color", "#db3368");
+          logo.src = "/resources/images/cdg.png";
+          break;
+        default:
+          root.style.setProperty("--main-color", "#335daa");
+          logo.src = "/resources/images/pga.png";
       }
     </script>
   </body>

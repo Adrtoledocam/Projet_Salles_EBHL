@@ -10,15 +10,18 @@ router.get("/calendar/:site/:room", async (req, res) => {
 
     // Récupération des événements pour PGA
     if (site === "pga") {
+      // Traitement des données avec la fonction fetchICSData
       const ICS_events = await fetchICSData(room);
       res.json(ICS_events);
     }
+
     // Récupération des événements pour EBHL ou CDG
     else if (site === "ebhl" || site === "cdg") {
       const [DB_events] = await db.query(
         "SELECT * FROM t_room WHERE romRoom = ?",
         [room]
       );
+      // Traitement des données avec la fonction fetchDBData
       const filteredDB_events = await fetchDBData(DB_events);
       res.json(filteredDB_events);
     }

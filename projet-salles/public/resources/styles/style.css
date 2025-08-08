@@ -7,11 +7,6 @@
   --eh-red: #d4583b;
   --eh-gray: #414141;
   --eh-white: #f4f4f8;
-
-  --main-color-pga: #335daa;
-  --main-color-ebhl: #f1ab01;
-  --main-color-cdg: #db3368;
-
   --main-color: var(--main-color-pga);
 }
 

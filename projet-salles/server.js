@@ -1,49 +1,56 @@
 const ical = require("node-ical");
 const axios = require("axios");
-const ICS_URLS = require("./public/controllers/ics-roomsData.js").ICS_URLS;
+const ROOMS_DATA = require("./public/controllers/roomsData.js").ROOMS_DATA;
 
-// Récupération et mise en forme des données via le lien ICS publique
+// Récupération et mise en forme des données via le lien ICS
 async function fetchICSData(room) {
-  const url = ICS_URLS[room]?.url;
+  const url = ROOMS_DATA[room]?.url;
 
   if (!url) {
-    throw new Error("ID de salle inconnu");
+    throw new Error("Le nom de salle est incorrect/inexistant.");
   }
 
   const response = await axios.get(url);
-  const data = ical.parseICS(response.data);
+  const data = ical.parseICS(response.data); // Transformation des données ICS en object JS
   const now = new Date();
 
   const results = [];
 
+  // Parcours de tous les événements récupérés dans
   for (const e of Object.values(data)) {
     if (e.type !== "VEVENT" || !(e.start instanceof Date)) continue;
 
     if (/annulé/i.test(e.summary)) continue;
+    // Si l'événement est un événement récurrent on va créer toutes les occurrences
     if (e.rrule) {
       // On récupère tous les événement répétitifs d'aujourd'hui et on garde ceux qui ne sont pas encore terminés
-      const searchStart = new Date(now);
-      searchStart.setHours(0, 0, 0, 0);
+      const searchRangeStart = new Date(now);
+      searchRangeStart.setHours(0, 0, 0, 0);
 
-      const searchEnd = new Date(now.getFullYear(), now.getMonth() + 3);
-      const futureOccurrences = e.rrule.between(searchStart, searchEnd, true);
-      const duration = e.end - e.start;
+      // On va créer les événements qui se répèten pour le mois en cours
+      const searchRangeEnd = new Date(now.getFullYear(), now.getMonth() + 1);
+      const rruleEvents = e.rrule.between(
+        searchRangeStart,
+        searchRangeEnd,
+        true
+      );
+      const eventDuration = e.end - e.start;
 
-      // Envoi des événements répétitifs, dans le tableau des événements
-      // Ne garder que les occurrences qui ne sont pas encore terminées
-      for (const occ of futureOccurrences) {
-        const occEnd = new Date(occ.getTime() + duration);
-        if (occEnd <= now) continue; // déjà terminé, on ignore
+      for (const rrE of rruleEvents) {
+        const rreEnd = new Date(rrE.getTime() + eventDuration);
+        if (rreEnd <= now) continue; // Si l'événement est annulé, on l'ignore
 
+        // Envoi de l'événement dans le tableau
         results.push({
           summary: e.summary,
-          start: occ,
-          end: occEnd,
+          start: rrE,
+          end: rreEnd,
         });
       }
     } else {
-      if (e.end <= now) continue;
+      if (e.end <= now) continue; // Si l'événement est terminé, on l'ignore
 
+      // Envoi de l'événement dans le tableau
       results.push({
         summary: e.summary,
         start: e.start,
@@ -52,24 +59,24 @@ async function fetchICSData(room) {
     }
   }
 
-  // Tri dans l'ordre chronologique
-  results.sort((a, b) => a.start - b.start);
+  results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
 
   return results.slice(0, 4); // On ne garde que les 4 premiers événements
 }
 
+// Récupération et mise en forme des données suite à leur récupération depuis la base de données
 async function fetchDBData(events) {
   const now = new Date();
   const results = [];
 
   for (const e of Object.values(events)) {
-    // Ici, on filtre sur romName
-    if (/annulé/i.test(e.romName)) continue;
+    if (/annulé/i.test(e.romName)) continue; // Si l'événement est annulé, on l'ignore
 
     const start = new Date(e.romStart);
     const end = new Date(e.romEnd);
     if (end <= now) continue; // Ignore les événements passés
 
+    // Envoi de l'événement dans le tableau
     results.push({
       summary: e.romName,
       start,
@@ -77,7 +84,7 @@ async function fetchDBData(events) {
     });
   }
 
-  results.sort((a, b) => a.start - b.start);
+  results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
 
   return results.slice(0, 4); // On ne garde que les 4 premiers événements
 }
