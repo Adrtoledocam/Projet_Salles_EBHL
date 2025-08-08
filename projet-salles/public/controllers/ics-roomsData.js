@@ -1,5 +1,5 @@
-// Toutes les URL publiques ainsi que le nom des salles pour accéder aux donnés
 export const ICS_URLS = {
+  // Salles - Pôle Grand Âge
   "Salle_PGA_Beau-Site_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/726bb31e016a47dbbb8e399865c4a1d9@eben-hezer.ch/14454d8d84e741e98d21a203e8b339103993903089613600432/calendar.ics",
     site: "pga",
@@ -28,10 +28,12 @@ export const ICS_URLS = {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/21836e9a6aa0427095f45c47fda2aa4b@eben-hezer.ch/799e2cfed9554caca855c5f5a8737d852073725888054266005/calendar.ics",
     site: "pga",
   },
+  // Salles - Cité du Genévrier
   Test_CDG: {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/b838e7d766894afdaf7cea4e00b1a55b@eben-hezer.ch/b5dadfa0fc5041479a80dbdbf5b71ddf11107132211051048243/calendar.ics",
     site: "cdg",
   },
+  // Salles - Eben-Hézer Lausanne
   Test_EBHL: {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/b838e7d766894afdaf7cea4e00b1a55b@eben-hezer.ch/b5dadfa0fc5041479a80dbdbf5b71ddf11107132211051048243/calendar.ics",
     site: "ebhl",
