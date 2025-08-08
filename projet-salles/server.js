@@ -3,8 +3,8 @@ const axios = require("axios");
 const ICS_URLS = require("./public/controllers/ics-roomsData.js").ICS_URLS;
 
 // Récupération et mise en forme des données via le lien ICS publique
-async function fetchICSData(site, id) {
-  const url = ICS_URLS[id]?.url;
+async function fetchICSData(room) {
+  const url = ICS_URLS[room]?.url;
 
   if (!url) {
     throw new Error("ID de salle inconnu");
@@ -30,7 +30,7 @@ async function fetchICSData(site, id) {
       const duration = e.end - e.start;
 
       // Envoi des événements répétitifs, dans le tableau des événements
-      // Ne garder que les occurrences dont la fin est > maintenant
+      // Ne garder que les occurrences qui ne sont pas encore terminées
       for (const occ of futureOccurrences) {
         const occEnd = new Date(occ.getTime() + duration);
         if (occEnd <= now) continue; // déjà terminé, on ignore
@@ -55,7 +55,31 @@ async function fetchICSData(site, id) {
   // Tri dans l'ordre chronologique
   results.sort((a, b) => a.start - b.start);
 
-  return results;
+  return results.slice(0, 4); // On ne garde que les 4 premiers événements
 }
 
-module.exports = fetchICSData;
+async function fetchDBData(events) {
+  const now = new Date();
+  const results = [];
+
+  for (const e of Object.values(events)) {
+    // Ici, on filtre sur romName
+    if (/annulé/i.test(e.romName)) continue;
+
+    const start = new Date(e.romStart);
+    const end = new Date(e.romEnd);
+    if (end <= now) continue; // Ignore les événements passés
+
+    results.push({
+      summary: e.romName,
+      start,
+      end,
+    });
+  }
+
+  results.sort((a, b) => a.start - b.start);
+
+  return results.slice(0, 4); // On ne garde que les 4 premiers événements
+}
+
+module.exports = { fetchICSData, fetchDBData };
