@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Horaires du jour</title>
-    <link rel="stylesheet" href="resources/styles/style.css" />
-    <script type="module" src="resources/scripts/updateRoom.js"></script>
-    <script type="module" src="resources/scripts/main.js"></script>
+    <link rel="stylesheet" href="/resources/styles/style.css" />
+    <script type="module" src="/resources/scripts/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -15,7 +14,8 @@
         <div class="selector-info">
           <!-- Logo et nom de la salle sélectionée -->
           <img
-            src="resources/images/pga.png"
+            id="site-logo"
+            src="/resources/images/pga.png"
             alt="Logo PGA avec fond transparent"
             draggable="false"
           />
@@ -43,6 +43,8 @@
               <option value="Salle_PGA_Coteau-Muraz_Colloque">
                 Coteau-Muraz - Salle Colloque
               </option>
+              <option value="Test_EBHL">Test_EBHL</option>
+              <option value="Test_CDG">Test_CDG</option>
             </select>
           </div>
         </div>
@@ -75,24 +77,41 @@
     </div>
 
     <!-- Mise à jour de l'URL et des données lors du changement de salle/URL -->
-    <script>
-      const salleId =
-        window.location.pathname.split("/")[1] ||
-        "Salle_PGA_Beau-Site_Vignerons";
+    <script type="module">
+      import { ICS_URLS } from "/controllers/ics-roomsData.js";
+
+      const pathParts = window.location.pathname.split("/");
+      const site = pathParts[1] || "pga";
+      const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
 
       document.getElementById("calendar-select").value = salleId;
-      fetchData(salleId);
+      fetchData(site, salleId);
 
       document
         .getElementById("calendar-select")
         .addEventListener("change", (e) => {
           const newSalle = e.target.value;
-          window.location.href = `/${newSalle}`;
+          const newSite = ICS_URLS[newSalle]?.site || "pga";
+          window.location.href = `/${newSite}/${newSalle}`;
         });
 
-      async function fetchData(id) {
-        const res = await fetch(`/api/calendar/${id}`);
+      async function fetchData(site, id) {
+        const res = await fetch(`/api/calendar/${site}/${id}`);
         const events = await res.json();
+      }
+
+      const root = document.documentElement;
+      const logo = document.getElementById("site-logo");
+
+      if (site === "ebhl") {
+        root.style.setProperty("--main-color", "var(--main-color-ebhl)");
+        logo.src = "/resources/images/ebhl.png";
+      } else if (site === "cdg") {
+        root.style.setProperty("--main-color", "var(--main-color-cdg)");
+        logo.src = "/resources/images/cdg.png";
+      } else {
+        root.style.setProperty("--main-color", "var(--main-color-pga)");
+        logo.src = "/resources/images/pga.png";
       }
     </script>
   </body>
