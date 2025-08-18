@@ -163,8 +163,68 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15vw;
+  /*width: 15vw;
   font-size: 4rem;
   font-weight: 500;
-  color: rgb(65, 65, 65);
+  color: rgb(65, 65, 65);*/
+}
+
+/* Styla barre de progression */
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 10px;
+  position: relative; 
+  left: 53%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 700px;
+}
+
+.progress-logo {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.progress-container {
+  flex-grow: 1;
+  background-color: #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 500px;
+  min-width: 200px; 
+  display: flex;
+  align-items: center;
+}
+
+#progress-bar {
+  height: 30px;
+  width: 0%;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  transition: width 1s ease-in-out;
+}
+
+.progress-countdown {
+  min-width: 70px; /* Ajusta según el máximo de cifras que esperes */
+  width: 120px;
+  text-align: left;
+  font-size: 1.2em;
+  color: black;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  padding-left: 10px;
 }
