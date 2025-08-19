@@ -138,9 +138,9 @@ function loadCalendar(room) {
           //Time display
           barNumber.textContent = "- " + timeText;
           if (msLeft <= 10 * 60 * 1000) {
-            bar.style.backgroundColor = "#ff0000ff"; // Red when < 10 minutes
+            bar.style.backgroundColor = "#d4583b"; // Red when < 10 minutes
           } else {
-            bar.style.backgroundColor = "#007bff"; // Blue when >= 10 minutes
+            bar.style.backgroundColor = "#27955a"; // Blue when >= 10 minutes
           }
           //bar.textContent = "- " + timeText;
           //bar.textContent = Math.round(percent) + "%";
@@ -171,7 +171,7 @@ function loadCalendar(room) {
             conflitHtml = `
 
           <img src="/resources/images/processing-time.png" alt="En cours" style="width:22px;vertical-align:middle; filter: brightness(0) invert(1);" draggable="false" />
-          <span style="color: #ff0000ff; font-weight: bold;">En cours</span>
+          <span style="color: #d4583b; font-weight: bold;">En cours</span>
         </span>
       `;
           }
@@ -183,7 +183,7 @@ function loadCalendar(room) {
             </p>
             <p> 
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
-              ${new Date(event.start).toLocaleDateString("fr-FR", {
+              ${new Date(event.start).toLocaleDateString([], {
                 day: "2-digit",
                 month: "2-digit",
               })} &nbsp; &nbsp; &nbsp; &nbsp;
