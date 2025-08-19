@@ -97,10 +97,14 @@ body {
 
 .bottom .main .info-main h2 {
   font-size: 4rem;
+  margin: 0px 0px 30px 0px;
 }
 
 .bottom .main .info-main p {
   font-size: 3rem;
+  width: 80%;
+  line-height: 70px;
+  margin: auto;
 }
 
 .bottom .main .info-main .first-event img {
@@ -131,16 +135,21 @@ body {
   border-left: 7px solid var(--main-color);
 }
 
-/* Côté gauche de la page avec les événements écrits en plus petit */
+/* Côté droite de la page avec les événements écrits en plus petit */
 .bottom .events {
   width: 35%;
   text-align: center;
-  margin: 0px 0px 20px 0px;
+}
+
+.bottom .events h2 {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .bottom .events .event {
-  padding: 10px 0px 10px 30px;
-  margin: 0px 20px 20px 20px;
+  padding: 2.5px 0px 2.5px 30px;
+  margin: 10px 10px 10px 10px;
   background-color: var(--main-color);
   border-radius: 10px;
 }
@@ -171,11 +180,12 @@ body {
 
 /* Styla barre de progression */
 .progress-wrapper {
+  margin-top: 60px;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   gap: 10px;
-  position: relative; 
+  position: relative;
   left: 53%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -201,7 +211,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   max-width: 500px;
-  min-width: 200px; 
+  min-width: 200px;
   display: flex;
   align-items: center;
 }

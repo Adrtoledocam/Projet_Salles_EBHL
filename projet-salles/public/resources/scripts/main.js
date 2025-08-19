@@ -28,7 +28,7 @@ function loadCalendar(room) {
       // Si aucun événement n'est trouvé
       if (events.length === 0) {
         mainInfo.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
-        secondInfo.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
+        secondInfo.innerHTML = "<h2> </h2>";
 
         // Statut de la salle
         roomStatus.textContent = "Libre";
@@ -61,9 +61,7 @@ function loadCalendar(room) {
               day: "2-digit",
               month: "2-digit",
             })}  
-            </p>
-            <p>
-            <img src="/resources/images/horloge-b-64.png" alt="" draggable="false" />
+
             ${start.toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
@@ -72,41 +70,36 @@ function loadCalendar(room) {
               hour: "2-digit",
               minute: "2-digit",
             })}
+            </p>
+            <p>
           </p>
-        </div>
-      `;
+        </div>`;
 
-      // Elements and structure progress bar
+      // Composants de la barre de progression
       if (isInProgress) {
-        //Container
         const progressWrapper = document.createElement("div");
         progressWrapper.classList.add("progress-wrapper");
 
-        //Logo Bar progress
         const progressBarLogo = document.createElement("div");
         progressBarLogo.innerHTML = `
-            <img src="/resources/images/hourglassLogo.png" alt="" draggable="false" class="progress-logo"  />
-        `;
-        //Progress bar
+        <img src="/resources/images/hourglassLogo.png" alt="" draggable="false" class="progress-logo"  />`;
+
         const progressBar = document.createElement("div");
         progressBar.classList.add("progress-container");
         progressBar.innerHTML = `
-          <div id="progress-bar"></div>        
-          `;
-        //Countdown number
+        <div id="progress-bar"></div>`;
+
         const countdownBar = document.createElement("div");
         countdownBar.classList.add("progress-countdown");
         countdownBar.innerHTML = `
-          <div id="progress-bar-number"></div>
-        `;
+        <div id="progress-bar-number"></div>`;
 
-        //Display in HTML
         progressWrapper.appendChild(progressBarLogo);
         progressWrapper.appendChild(progressBar);
         progressWrapper.appendChild(countdownBar);
         mainInfo.appendChild(progressWrapper);
 
-        // Fonction bar progress with number and color
+        // Fonction qui met à jour la barre de progression
         function updateProgressBar() {
           const now = new Date();
           const percent = Math.max(
@@ -120,7 +113,6 @@ function loadCalendar(room) {
           let msLeft = end - now;
           if (msLeft < 0) msLeft = 0;
 
-          //Time Calculate
           const totalSeconds = Math.floor(msLeft / 1000);
           const hours = Math.floor(totalSeconds / 3600);
           const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -135,19 +127,20 @@ function loadCalendar(room) {
             timeText = `${minutes}:${seconds.toString().padStart(2, "0")}`;
           }
 
-          //Time display
+          // Affichage du temps restant et changement de la couleur de la barre
           barNumber.textContent = "- " + timeText;
           if (msLeft <= 10 * 60 * 1000) {
-            bar.style.backgroundColor = "#d4583b"; // Red when < 10 minutes
+            bar.style.backgroundColor = "#d4583b";
           } else {
-            bar.style.backgroundColor = "#27955a"; // Blue when >= 10 minutes
+            bar.style.backgroundColor = "#27955a";
           }
-          //bar.textContent = "- " + timeText;
-          //bar.textContent = Math.round(percent) + "%";
+          // Temps restant dans la barre de progression
+          // bar.textContent = "- " + timeText;
+          // bar.textContent = Math.round(percent) + "%";
         }
         updateProgressBar();
 
-        //  Update progress bar
+        //  Mise à jour de la barre de progression
         const intervalId = setInterval(() => {
           updateProgressBar();
           if (new Date() >= end) clearInterval(intervalId);
@@ -165,7 +158,7 @@ function loadCalendar(room) {
           const eventStart = new Date(event.start);
           const eventEnd = new Date(event.end);
 
-          //Conflit Event condition "En course"
+          // Gestion des conflits si un événement se produit en même temps qu'un autre
           let conflitHtml = "";
           if (now >= eventStart && now <= eventEnd) {
             conflitHtml = `
