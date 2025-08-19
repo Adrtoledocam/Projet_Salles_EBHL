@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { fetchICSData, fetchDBData } = require("../server.js");
-const db = require("../config/db");
+const setDbConfig = require("../config/db");
 const ROOMS_DATA = require("../public/controllers/roomsData.js").ROOMS_DATA;
 
 // Récupération de tous les événements d'une salle spécifique
@@ -9,28 +9,26 @@ router.get("/calendar/:site/:room", async (req, res) => {
   try {
     const { site, room } = req.params;
 
-    // Récupération des événements pour PGA
-    if (site === "pga") {
-      // Traitement des données avec la fonction fetchICSData
-      const ICS_events = await fetchICSData(room);
-      res.json(ICS_events);
-    }
+    // Récupération des événements depuis la DB pour EBHL/CDG
+    if (!ROOMS_DATA[room]?.url) {
+      let DB = "";
+      if (site == "ebhl") {
+        DB = setDbConfig("localhost", "db_test_ebhl");
+      } else if (site == "cdg") {
+        DB = setDbConfig("localhost", "db_test_cdg");
+      }
 
-    // Récupération des événements pour EBHL ou CDG
-    // UNIQUEMENT DEPUIS LA DB
-    else if ((site === "ebhl" || site === "cdg") && !ROOMS_DATA[room]?.url) {
-      const [DB_events] = await db.query(
+      const [DBevents] = await DB.query(
         "SELECT * FROM t_room WHERE romRoom = ?",
         [room]
       );
-      // Traitement des données avec la fonction fetchDBData
-      const filteredDB_events = await fetchDBData(DB_events);
+
+      const filteredDB_events = await fetchDBData(DBevents);
       res.json(filteredDB_events);
     }
-    // Récupération des événements pour EBHL ou CDG
-    // UNIQUEMENT DEPUIX EXCHANGE
-    else if (site === "ebhl" || site === "cdg") {
-      // Traitement des données avec la fonction fetchICSData
+
+    // Récupération des événements depuis Exchange pour EBHL/PGA
+    else if (site === "ebhl" || site === "pga") {
       const ICS_events = await fetchICSData(room);
       res.json(ICS_events);
     }
