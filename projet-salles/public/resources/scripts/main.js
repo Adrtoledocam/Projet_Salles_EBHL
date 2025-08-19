@@ -58,20 +58,20 @@ function loadCalendar(room) {
           <p>
             <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
             ${start.toLocaleDateString([], {
-        day: "2-digit",
-        month: "2-digit",
-      })}  
+              day: "2-digit",
+              month: "2-digit",
+            })}  
             </p>
             <p>
             <img src="/resources/images/horloge-b-64.png" alt="" draggable="false" />
             ${start.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })} - 
+              hour: "2-digit",
+              minute: "2-digit",
+            })} - 
             ${end.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })}
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </p>
         </div>
       `;
@@ -109,7 +109,10 @@ function loadCalendar(room) {
         // Fonction bar progress with number and color
         function updateProgressBar() {
           const now = new Date();
-          const percent = Math.max(0, Math.min(100, ((now - start) / (end - start)) * 100));
+          const percent = Math.max(
+            0,
+            Math.min(100, ((now - start) / (end - start)) * 100)
+          );
           const bar = progressBar.querySelector("#progress-bar");
           const barNumber = countdownBar.querySelector("#progress-bar-number");
           bar.style.width = percent + "%";
@@ -125,7 +128,9 @@ function loadCalendar(room) {
 
           let timeText = "";
           if (hours > 0) {
-            timeText = `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            timeText = `${hours}:${minutes
+              .toString()
+              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
           } else {
             timeText = `${minutes}:${seconds.toString().padStart(2, "0")}`;
           }
@@ -162,9 +167,7 @@ function loadCalendar(room) {
 
           //Conflit Event condition "En course"
           let conflitHtml = "";
-          if (
-            eventStart < end && eventEnd > start // Hay solapamiento
-          ) {
+          if (now >= eventStart && now <= eventEnd) {
             conflitHtml = `
 
           <img src="/resources/images/processing-time.png" alt="En cours" style="width:22px;vertical-align:middle; filter: brightness(0) invert(1);" draggable="false" />
@@ -181,18 +184,18 @@ function loadCalendar(room) {
             <p> 
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
               ${new Date(event.start).toLocaleDateString("fr-FR", {
-            day: "2-digit",
-            month: "2-digit",
-          })} &nbsp; &nbsp; &nbsp; &nbsp;
+                day: "2-digit",
+                month: "2-digit",
+              })} &nbsp; &nbsp; &nbsp; &nbsp;
               <img src="/resources/images/horloge-w-64.png" alt="" draggable="false" />
               ${new Date(event.start).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })} - 
+                hour: "2-digit",
+                minute: "2-digit",
+              })} - 
               ${new Date(event.end).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })} &nbsp; &nbsp; &nbsp; &nbsp;
+                hour: "2-digit",
+                minute: "2-digit",
+              })} &nbsp; &nbsp; &nbsp; &nbsp;
           ${conflitHtml}
             </p>
           `;
