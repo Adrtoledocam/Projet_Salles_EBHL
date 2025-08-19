@@ -1,4 +1,29 @@
 export const ROOMS_DATA = {
+  // Salles - Eben-Hézer Lausanne
+
+  Salle_des_Pas_Perdus: {
+    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/03037050045f4f77b999183c4d1e855e@eben-hezer.ch/19da1c99d5b84633bf9e3dfb2374953d1568427109262387736/calendar.ics",
+    site: "ebhl",
+  },
+  "Bureau_Aumoniers-MJH": {
+    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/26be97df56d24d3f9fd91bd59f69c69a@eben-hezer.ch/671876874a304de2aabaa7dad2fd120814811877050155374535/calendar.ics",
+    site: "ebhl",
+  },
+  "Bureau_CDL-MJH": {
+    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/e01c7313480745869d5e7e5f10335062@eben-hezer.ch/92dee8ff5a054cb9bd17a7fff5bee4fc11271071637650241910/calendar.ics",
+    site: "ebhl",
+  },
+  Salle_Victoria: {
+    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/9e3ef3231e6d44898aa2aa0943be4f26@eben-hezer.ch/f0e985e4302d42098e368dd8def1e47b9444836960257549334/calendar.ics",
+    site: "ebhl",
+  },
+  Test_EBHL: {
+    site: "ebhl",
+  },
+  // Salles - Cité du Genévrier
+  Test_CDG: {
+    site: "cdg",
+  },
   // Salles - Pôle Grand Âge
   "Salle_PGA_Beau-Site_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/726bb31e016a47dbbb8e399865c4a1d9@eben-hezer.ch/14454d8d84e741e98d21a203e8b339103993903089613600432/calendar.ics",
@@ -27,13 +52,5 @@ export const ROOMS_DATA = {
   "Salle_PGA_Coteau-Muraz_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/21836e9a6aa0427095f45c47fda2aa4b@eben-hezer.ch/799e2cfed9554caca855c5f5a8737d852073725888054266005/calendar.ics",
     site: "pga",
-  },
-  // Salles - Cité du Genévrier
-  Test_CDG: {
-    site: "cdg",
-  },
-  // Salles - Eben-Hézer Lausanne
-  Test_EBHL: {
-    site: "ebhl",
   },
 };
