@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { fetchICSData, fetchDBData } = require("../server.js");
-const setDbConfig = require("../config/db");
+const { db_ebhl, db_cdg } = require("../config/db");
 const ROOMS_DATA = require("../public/controllers/roomsData.js").ROOMS_DATA;
 
 // Récupération de tous les événements d'une salle spécifique
@@ -13,9 +13,9 @@ router.get("/calendar/:site/:room", async (req, res) => {
     if (!ROOMS_DATA[room]?.url) {
       let DB = "";
       if (site == "ebhl") {
-        DB = setDbConfig("localhost", "db_test_ebhl");
+        DB = db_ebhl;
       } else if (site == "cdg") {
-        DB = setDbConfig("localhost", "db_test_cdg");
+        DB = db_cdg;
       }
 
       const [DBevents] = await DB.query(

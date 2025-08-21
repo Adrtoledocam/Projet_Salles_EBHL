@@ -11,7 +11,11 @@ function setDbConfig(host, database) {
     connectionLimit: 10,
     queueLimit: 0,
   });
+
   return pool.promise();
 }
 
-module.exports = setDbConfig;
+const db_ebhl = setDbConfig("localhost", "db_test_ebhl");
+const db_cdg = setDbConfig("localhost", "db_test_cdg");
+
+module.exports = { db_ebhl, db_cdg };

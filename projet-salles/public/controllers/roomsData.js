@@ -1,6 +1,5 @@
 export const ROOMS_DATA = {
   // Salles - Eben-Hézer Lausanne
-
   Salle_des_Pas_Perdus: {
     url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/03037050045f4f77b999183c4d1e855e@eben-hezer.ch/19da1c99d5b84633bf9e3dfb2374953d1568427109262387736/calendar.ics",
     site: "ebhl",
