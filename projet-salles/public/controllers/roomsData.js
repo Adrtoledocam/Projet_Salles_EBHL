@@ -1,8 +1,40 @@
 export const ROOMS_DATA = {
-  // Salles - Eben-Hézer Lausanne
+  // <--- LAUSANNE EAU --->
+  Salle_Victoria: {
+    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/9e3ef3231e6d44898aa2aa0943be4f26@eben-hezer.ch/f0e985e4302d42098e368dd8def1e47b9444836960257549334/calendar.ics",
+    site: "ebhl",
+  },
+
+  // <--- LAUSANNE MDC --->
   Salle_des_Pas_Perdus: {
     url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/03037050045f4f77b999183c4d1e855e@eben-hezer.ch/19da1c99d5b84633bf9e3dfb2374953d1568427109262387736/calendar.ics",
     site: "ebhl",
+  },
+  Salle_Julie_Hofmann: {
+    site: "ebhl",
+    salle: "Salle Julie Hofmann",
+  },
+  Salle_Marcel_Jordan: {
+    site: "ebhl",
+    salle: "Salle Marcel Jordan",
+  },
+  "Salle_New-York": {
+    site: "ebhl",
+    salle: "Salle New-York",
+  },
+
+  // <--- LAUSANNE MJH --->
+  Salle_de_culte_MJH: {
+    site: "ebhl",
+    salle: "Salle de culte MJH",
+  },
+  Salle_Oceane: {
+    site: "ebhl",
+    salle: "Salle Océane",
+  },
+  Tente_exterieure_Musardiere: {
+    site: "ebhl",
+    salle: "Tente extérieure Musardière",
   },
   "Bureau_Aumoniers-MJH": {
     url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/26be97df56d24d3f9fd91bd59f69c69a@eben-hezer.ch/671876874a304de2aabaa7dad2fd120814811877050155374535/calendar.ics",
@@ -12,18 +44,88 @@ export const ROOMS_DATA = {
     url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/e01c7313480745869d5e7e5f10335062@eben-hezer.ch/92dee8ff5a054cb9bd17a7fff5bee4fc11271071637650241910/calendar.ics",
     site: "ebhl",
   },
-  Salle_Victoria: {
-    url: "https://mailpersonnel.eben-hezer.ch/OWA/calendar/9e3ef3231e6d44898aa2aa0943be4f26@eben-hezer.ch/f0e985e4302d42098e368dd8def1e47b9444836960257549334/calendar.ics",
+
+  // <--- LAUSANNE PRA --->
+  Chambre_collaborateur: {
     site: "ebhl",
+    salle: "Chambre collaborateur - Maximum 1 réservation par nuit",
   },
-  Test_EBHL: {
+  La_Majeure: {
     site: "ebhl",
+    salle: "La Majeure",
   },
+  La_Mineure: {
+    site: "ebhl",
+    salle: "La Mineure",
+  },
+  La_Ronde: {
+    site: "ebhl",
+    salle: "La Ronde",
+  },
+  Salle_Multimedia_CDL: {
+    site: "ebhl",
+    salle: "Salle Multimédia CDL",
+  },
+
   // Salles - Cité du Genévrier
-  Test_CDG: {
+  Exploration_sensorielle_grande: {
     site: "cdg",
+    salle: "Exploration sensorielle - grande salle",
   },
-  // Salles - Pôle Grand Âge
+  Exploration_sensorielle_petite: {
+    site: "cdg",
+    salle: "Exploration sensorielle - petite salle",
+  },
+  Piscine: {
+    site: "cdg",
+    salle: "Piscine",
+  },
+  Rural_de_pra: {
+    site: "cdg",
+    salle: "Rural de pra",
+  },
+  Salle_administrative: {
+    site: "cdg",
+    salle: "Salle administrative",
+  },
+  Salle_colloque_pra42: {
+    site: "cdg",
+    salle: "Salle colloque Pra 42",
+  },
+  Salle_colloque_pra44: {
+    site: "cdg",
+    salle: "Salle colloque Pra 44",
+  },
+  Salle_jaman: {
+    site: "cdg",
+    salle: "Salle Jaman 10-15pers",
+  },
+  Salle_pleiades: {
+    site: "cdg",
+    salle: "Salle Jaman 10-15pers",
+  },
+  Salle_polyvalente: {
+    site: "cdg",
+    salle: "Salle polyvalente",
+  },
+  "Salle_Rochers-de-Naye": {
+    site: "cdg",
+    salle: "Salle Rochers-De-Naye",
+  },
+  Salle_sur_eau: {
+    site: "cdg",
+    salle: "Salle Sur eau",
+  },
+  Salle_willy_fruttiger: {
+    site: "cdg",
+    salle: "Salle Willy Fruttiger 20-30pers",
+  },
+
+  // <--- PGA BEAU SITE --->
+  "Salle_PGA_Beau-Site_Vignerons": {
+    url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/b6287f6654f04e5883b10befc62dc7f0@eben-hezer.ch/85753b96bdf44ff2a4062521f830a1be17337712867828642393/calendar.ics",
+    site: "pga",
+  },
   "Salle_PGA_Beau-Site_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/726bb31e016a47dbbb8e399865c4a1d9@eben-hezer.ch/14454d8d84e741e98d21a203e8b339103993903089613600432/calendar.ics",
     site: "pga",
@@ -40,14 +142,14 @@ export const ROOMS_DATA = {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/ba0b45356d3f40ebbc063763fed13bf5@eben-hezer.ch/f49fe575d7664f56ad96f59a072ca79b2966595426940186045/calendar.ics",
     site: "pga",
   },
-  "Salle_PGA_Beau-Site_Vignerons": {
-    url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/b6287f6654f04e5883b10befc62dc7f0@eben-hezer.ch/85753b96bdf44ff2a4062521f830a1be17337712867828642393/calendar.ics",
-    site: "pga",
-  },
+
+  // <--- PGA BONNETTES --->
   Salle_PGA_Bonnettes_Colloque: {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/b838e7d766894afdaf7cea4e00b1a55b@eben-hezer.ch/b5dadfa0fc5041479a80dbdbf5b71ddf11107132211051048243/calendar.ics",
     site: "pga",
   },
+
+  // <--- PGA COTEAU-MURAZ --->
   "Salle_PGA_Coteau-Muraz_Colloque": {
     url: "http://mailpersonnel.eben-hezer.ch/owa/calendar/21836e9a6aa0427095f45c47fda2aa4b@eben-hezer.ch/799e2cfed9554caca855c5f5a8737d852073725888054266005/calendar.ics",
     site: "pga",
