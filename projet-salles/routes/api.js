@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { fetchICSData, fetchDBData } = require("../server.js");
-const { db_ebhl, db_cdg } = require("../config/db");
 const ROOMS_DATA = require("../public/controllers/roomsData.js").ROOMS_DATA;
+const { db_ebhl, db_cdg } = require("../config/db.js");
 
 // Récupération de tous les événements d'une salle spécifique
 router.get("/calendar/:site/:room", async (req, res) => {
@@ -18,10 +18,20 @@ router.get("/calendar/:site/:room", async (req, res) => {
         DB = db_cdg;
       }
 
-      const [DBevents] = await DB.query(
-        "SELECT * FROM t_room WHERE romRoom = ?",
-        [room]
-      );
+      // Requête SQL pour récupérer les événements de la salle sélectionée
+      const query = `
+      SELECT
+        v.dtstart AS romStart,
+        v.dtend AS romEnd,
+        v.summary AS romName,
+        vc.name AS salle
+      FROM medhive.vevent v
+      JOIN medhive.resources r ON v.attendee = r.vcardid
+      JOIN medhive.vcard vc ON r.vcardid = vc.id
+      WHERE r.type = '3' AND vc.name = '${ROOMS_DATA[room]?.salle}'
+      `;
+
+      const [DBevents] = await DB.query(query);
 
       const filteredDB_events = await fetchDBData(DBevents);
       res.json(filteredDB_events);
