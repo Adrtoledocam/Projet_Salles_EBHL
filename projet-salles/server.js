@@ -20,7 +20,7 @@ async function fetchICSData(room) {
   for (const e of Object.values(data)) {
     if (e.type !== "VEVENT" || !(e.start instanceof Date)) continue;
 
-    if (/annulé/i.test(e.summary)) continue;
+    if (/annulé/i.test(e.summary) || e.romName == "") continue;
     // Si l'événement est un événement récurrent on va créer toutes les occurrences
     if (e.rrule) {
       // On récupère tous les événement répétitifs d'aujourd'hui et on garde ceux qui ne sont pas encore terminés
@@ -70,7 +70,7 @@ async function fetchDBData(events) {
   const results = [];
 
   for (const e of Object.values(events)) {
-    if (/annulé/i.test(e.romName)) continue; // Si l'événement est annulé, on l'ignore
+    if (/annulé/i.test(e.romName) || e.romName == "") continue; // Si l'événement est annulé, on l'ignore
 
     const start = new Date(e.romStart);
     const end = new Date(e.romEnd);
