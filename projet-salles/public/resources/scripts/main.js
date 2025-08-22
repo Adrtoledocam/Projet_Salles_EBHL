@@ -60,7 +60,7 @@ function loadCalendar(room) {
             ${start.toLocaleDateString([], {
               day: "2-digit",
               month: "2-digit",
-            })}  
+            })}  &nbsp; 
 
             ${start.toLocaleTimeString([], {
               hour: "2-digit",
@@ -179,8 +179,7 @@ function loadCalendar(room) {
               ${new Date(event.start).toLocaleDateString([], {
                 day: "2-digit",
                 month: "2-digit",
-              })} &nbsp; &nbsp; &nbsp; &nbsp;
-              <img src="/resources/images/horloge-w-64.png" alt="" draggable="false" />
+              })} &nbsp; 
               ${new Date(event.start).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -188,7 +187,7 @@ function loadCalendar(room) {
               ${new Date(event.end).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
-              })} &nbsp; &nbsp; &nbsp; &nbsp;
+              })} &nbsp; 
           ${conflitHtml}
             </p>
           `;
