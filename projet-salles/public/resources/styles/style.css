@@ -186,7 +186,7 @@ body {
   justify-content: center;
   gap: 10px;
   position: relative;
-  left: 53%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 700px;
@@ -227,8 +227,8 @@ body {
   transition: width 1s ease-in-out;
 }
 
-.progress-countdown {
-  min-width: 70px; /* Ajusta según el máximo de cifras que esperes */
+/* .progress-countdown {
+  min-width: 70px;
   width: 120px;
   text-align: left;
   font-size: 1.2em;
@@ -237,4 +237,4 @@ body {
   align-items: start;
   justify-content: flex-start;
   padding-left: 10px;
-}
+} */

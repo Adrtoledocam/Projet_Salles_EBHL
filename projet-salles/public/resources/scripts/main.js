@@ -128,7 +128,7 @@ function loadCalendar(room) {
           }
 
           // Affichage du temps restant et changement de la couleur de la barre
-          barNumber.textContent = "- " + timeText;
+          // barNumber.textContent = "- " + timeText;
           if (msLeft <= 10 * 60 * 1000) {
             bar.style.backgroundColor = "#d4583b";
           } else {
