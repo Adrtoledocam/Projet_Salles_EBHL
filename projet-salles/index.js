@@ -1,7 +1,6 @@
 const express = require("express");
-
+const env = require("dotenv").config();
 const app = express();
-const PORT = 3000;
 
 app.use(express.static("public"));
 
@@ -14,6 +13,6 @@ app.use("/api", apiRoutes);
 app.use("/", frontendRoutes);
 
 // Démarrage de l'application en local
-app.listen(PORT, () => {
-  console.log(`✅ http://localhost:${PORT}`);
+app.listen(env.PORT, () => {
+  console.log(`✅ http://localhost:${env.PORT}`);
 });
