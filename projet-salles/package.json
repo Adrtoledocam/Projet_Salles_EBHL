@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prod": "pm2 startOrRestart ecosystem.config.js --env production"
   },
   "keywords": [],
   "author": "TOLEDO Adrian / VELICKOVIC Mateja",
