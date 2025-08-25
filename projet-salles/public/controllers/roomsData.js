@@ -66,6 +66,10 @@ export const ROOMS_DATA = {
     site: "ebhl",
     salle: "Salle Multimédia CDL",
   },
+  Salon: {
+    site: "ebhl",
+    salle: "Salon",
+  },
 
   // Salles - Cité du Genévrier
   Exploration_sensorielle_grande: {
