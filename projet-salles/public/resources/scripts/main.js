@@ -201,7 +201,6 @@ function loadCalendar(room) {
     })
     .catch((err) => {
       console.error(err);
-      alert("Erreur lors du chargement des horaires");
     });
 }
 
