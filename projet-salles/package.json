@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "devcrypt": "dotenvx run -- nodemon index.js",
-    "prod": "pm2 startOrRestart ecosystem.config.js --env production",
-    "prodcrypt": "dotenvx run -- pm2 startOrRestart ecosystem.config.js --env production"
+    "prod": "pm2 startOrRestart ecosystem.config.js",
+    "prodcrypt": "dotenvx run -- pm2 startOrRestart ecosystem.config.js"
   },
   "keywords": [],
   "author": "TOLEDO Adrian / VELICKOVIC Mateja",
