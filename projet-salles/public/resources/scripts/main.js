@@ -46,7 +46,7 @@ function loadCalendar(room) {
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
           <p>
-            <img src="/resources/images/meetingLogo.png" alt="" draggable="false" />
+            <img src="/resources/images/meeting-b-64.png" alt="" draggable="false" />
             ${first.summary}
           </p>
           <p>
@@ -76,7 +76,7 @@ function loadCalendar(room) {
 
         const progressBarLogo = document.createElement("div");
         progressBarLogo.innerHTML = `
-        <img src="/resources/images/hourglassLogo.png" alt="" draggable="false" class="progress-logo"  />`;
+        <img src="/resources/images/sablier-b-64.png" alt="" draggable="false" class="progress-logo"  />`;
 
         const progressBar = document.createElement("div");
         progressBar.classList.add("progress-container");
@@ -152,10 +152,8 @@ function loadCalendar(room) {
           let conflitHtml = "";
           if (now >= eventStart && now <= eventEnd) {
             conflitHtml = `
-
-          <img src="/resources/images/processing-time.png" alt="En cours" style="width:22px;vertical-align:middle; filter: brightness(0) invert(1);" draggable="false" />
+        
           <span style="color: #d4583b; font-weight: bold;">En cours</span>
-        </span>
       `;
           }
 
