@@ -43,7 +43,7 @@ router.get("/calendar/:site/:room", async (req, res) => {
       res.json(ICS_events);
     }
   } catch (error) {
-    console.error("Erreur lors de la récupération des données", error.message);
+    console.error("Impossible de récupérer les données :", error.message);
     res.status(500).json({ error: error.message });
   }
 });
