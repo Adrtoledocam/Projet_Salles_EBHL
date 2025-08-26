@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "occupation-de-sallse",
+      name: "occupation-de-salles",
       script: "./index.js",
       instances: "5",
     },
