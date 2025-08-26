@@ -160,11 +160,7 @@ function loadCalendar(room) {
           }
 
           row.innerHTML = `
-            <p> 
-              <img src="/resources/images/meetingLogo.png" alt="" draggable="false" style="filter: brightness(0) invert(1);" />
-              ${event.summary || ""}
-            </p>
-            <p> 
+             <p> 
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
               ${new Date(event.start).toLocaleDateString([], {
                 day: "2-digit",
@@ -180,6 +176,12 @@ function loadCalendar(room) {
               })} &nbsp; 
           ${conflitHtml}
             </p>
+
+
+            <p class="summary-event"> 
+              ${event.summary}
+            </p>
+
           `;
           // Ajout de l'événement panneau secondaire
           secondInfo.appendChild(row);

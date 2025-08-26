@@ -130,7 +130,7 @@ body {
 }
 
 .bottom .middle .line {
-  height: 90%;
+  height: 100%;
   margin: 70%;
   border-left: 7px solid var(--main-color);
 }
@@ -149,16 +149,25 @@ body {
 }
 
 .bottom .events .event {
-  padding: 2.5px 0px 2.5px 30px;
-  margin: 10px 10px 10px 10px;
+  padding: 2.5px 20px 2.5px 30px;
+  margin: 10px;
+  font-weight: 100;
   background-color: var(--main-color);
   border-radius: 15px;
+}
+
+.bottom .events .event .summary-event {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-self: center;
 }
 
 .bottom .events .event p {
   text-align: left;
   font-weight: bold;
   color: var(--eh-white);
+  margin: 20px 0px;
 }
 
 /* Style des icônes à côté des informations de l'événement */
