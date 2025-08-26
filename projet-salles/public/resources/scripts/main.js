@@ -4,16 +4,10 @@ const mainInfo = document.querySelector(".info-main"); // Panneau principal (gau
 const secondInfo = document.querySelector(".events"); // Panneau secondaire (droite)
 const selectedRoom = document.getElementById("calendar-select"); // Sélecteur de salle (liste)
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
-const clock = document.getElementById("clock"); // Heure
 
 // Mise à jour de l'heure et rafraîchissement de la page chaque minutes
 setInterval(() => {
   let date = new Date();
-  /*clock.innerHTML = date.toLocaleTimeString("fr-FR", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });*/
 }, 2);
 
 // Chargement du calendrier selon la salle sélectionnée
