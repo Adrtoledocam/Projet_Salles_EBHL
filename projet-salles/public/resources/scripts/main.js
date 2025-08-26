@@ -122,15 +122,11 @@ function loadCalendar(room) {
           }
 
           // Affichage du temps restant et changement de la couleur de la barre
-          // barNumber.textContent = "- " + timeText;
           if (msLeft <= 10 * 60 * 1000) {
             bar.style.backgroundColor = "#d4583b";
           } else {
             bar.style.backgroundColor = "#27955a";
           }
-          // Temps restant dans la barre de progression
-          // bar.textContent = "- " + timeText;
-          // bar.textContent = Math.round(percent) + "%";
         }
         updateProgressBar();
 
