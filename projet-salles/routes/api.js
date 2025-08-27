@@ -28,10 +28,10 @@ router.get("/calendar/:site/:room", async (req, res) => {
       FROM medhive.vevent v
       JOIN medhive.resources r ON v.attendee = r.vcardid
       JOIN medhive.vcard vc ON r.vcardid = vc.id
-      WHERE r.type = ? AND vc.name = ?
+      WHERE r.type = 3 AND vc.name = ?
       `;
 
-      const [DBevents] = await DB.query(query, ["3", ROOMS_DATA[room]?.salle]);
+      const [DBevents] = await DB.query(query, [ROOMS_DATA[room]?.salle]);
 
       const filteredDB_events = await fetchDBData(DBevents);
       res.json(filteredDB_events);
