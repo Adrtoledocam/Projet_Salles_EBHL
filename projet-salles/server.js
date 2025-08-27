@@ -70,15 +70,15 @@ async function fetchDBData(events) {
   const results = [];
 
   for (const e of Object.values(events)) {
-    if (/annulé/i.test(e.event) || e.event == "") continue; // Si l'événement est annulé, on l'ignore
+    if (/annulé/i.test(e.titleEvent) || e.titleEvent == "") continue; // Si l'événement est annulé, on l'ignore
 
-    const start = new Date(e.e_start);
-    const end = new Date(e.e_end);
+    const start = new Date(e.startEvent);
+    const end = new Date(e.endEvent);
     if (end <= now) continue; // Ignore les événements passés
 
     // Envoi de l'événement dans le tableau
     results.push({
-      summary: e.event,
+      summary: e.titleEvent,
       start,
       end,
     });
