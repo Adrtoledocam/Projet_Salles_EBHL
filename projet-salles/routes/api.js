@@ -21,10 +21,10 @@ router.get("/calendar/:site/:room", async (req, res) => {
       // Requête SQL pour récupérer les événements de la salle sélectionée
       const query = `
       SELECT
-        v.dtstart AS romStart,
-        v.dtend AS romEnd,
-        v.summary AS romName,
-        vc.name AS salle
+        vc.name AS room,
+        v.summary AS event,
+        v.dtstart AS e_start,
+        v.dtend AS e_end
       FROM medhive.vevent v
       JOIN medhive.resources r ON v.attendee = r.vcardid
       JOIN medhive.vcard vc ON r.vcardid = vc.id
