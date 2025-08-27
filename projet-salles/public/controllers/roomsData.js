@@ -106,7 +106,7 @@ export const ROOMS_DATA = {
   },
   Salle_pleiades: {
     site: "cdg",
-    salle: "Salle Jaman 10-15pers",
+    salle: "Salle Pléïades 15pers",
   },
   Salle_polyvalente: {
     site: "cdg",
