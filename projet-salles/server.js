@@ -61,7 +61,7 @@ async function fetchICSData(room) {
 
   results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
 
-  return results.slice(0, 4); // On ne garde que les 4 premiers événements
+  return results.slice(0, 3); // On ne garde que les 4 premiers événements
 }
 
 // Récupération et mise en forme des données suite à leur récupération depuis la base de données
@@ -79,6 +79,7 @@ async function fetchDBData(events) {
     // Envoi de l'événement dans le tableau
     results.push({
       summary: e.titleEvent,
+      organizer: e.organizerEvent,
       start,
       end,
     });
@@ -86,7 +87,7 @@ async function fetchDBData(events) {
 
   results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
 
-  return results.slice(0, 4); // On ne garde que les 4 premiers événements
+  return results.slice(0, 3); // On ne garde que les 4 premiers événements
 }
 
 module.exports = { fetchICSData, fetchDBData };
