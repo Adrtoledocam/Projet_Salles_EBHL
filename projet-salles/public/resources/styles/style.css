@@ -35,7 +35,8 @@ h2 {
   font-weight: 500;
 }
 
-p {
+p,
+marquee {
   font-size: 1.5rem;
 }
 
@@ -103,8 +104,13 @@ body {
 .bottom .main .info-main p {
   font-size: 3rem;
   width: 80%;
+  max-width: 670px;
   line-height: 70px;
   margin: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
 }
 
 .bottom .main .info-main .first-event img {
@@ -149,18 +155,36 @@ body {
 }
 
 .bottom .events .event {
-  padding: 2.5px 20px 2.5px 30px;
+  padding: 2.5px 20px;
   margin: 10px;
   font-weight: 100;
   background-color: var(--main-color);
   border-radius: 15px;
 }
 
+.bottom .events .event marquee {
+  color: var(--eh-white);
+  font-weight: bold;
+}
+
 .bottom .events .event .summary-event {
-  display: flex;
-  flex-direction: row;
   width: 100%;
   align-self: center;
+}
+
+.bottom .events .event .test {
+  width: 100%;
+  align-self: center;
+  display: flex;
+  color: var(--eh-white);
+}
+
+.bottom .events .event .test img {
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  max-width: 55px;
+  max-height: 55px;
 }
 
 .bottom .events .event p {
@@ -168,13 +192,15 @@ body {
   font-weight: bold;
   color: var(--eh-white);
   margin: 20px 0px;
+  margin: 12px;
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* Style des icônes à côté des informations de l'événement */
 .bottom .events .event img {
   width: 25px;
   padding-right: 10px;
-  margin-right: 5px;
 }
 
 /* Style de l'heure affichée en haut à droite */
@@ -232,15 +258,3 @@ body {
   font-weight: bold;
   transition: width 1s ease-in-out;
 }
-
-/* .progress-countdown {
-  min-width: 70px;
-  width: 120px;
-  text-align: left;
-  font-size: 1.2em;
-  color: black;
-  display: flex;
-  align-items: start;
-  justify-content: flex-start;
-  padding-left: 10px;
-} */
