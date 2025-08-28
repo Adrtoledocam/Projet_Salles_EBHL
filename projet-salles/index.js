@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 
-require("dotenv").config();
-
 app.use(express.static("public"));
 
 // Import des routes
@@ -14,6 +12,6 @@ app.use("/api", apiRoutes);
 app.use("/", frontendRoutes);
 
 // Démarrage de l'application en local
-app.listen(process.env.PORT, () => {
-  console.log(`✅ http://localhost:${process.env.PORT}`);
+app.listen(3000, () => {
+  console.log(`✅ Port: 3000`);
 });
