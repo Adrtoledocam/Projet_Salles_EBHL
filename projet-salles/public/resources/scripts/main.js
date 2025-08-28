@@ -45,10 +45,24 @@ function loadCalendar(room) {
       mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
-          <p>
-            <img src="/resources/images/meeting-b-64.png" alt="" draggable="false" />
+                  
+
+           <p>
+             <img src="/resources/images/meeting-b-64.png" alt="" draggable="false" />
             ${first.summary}
           </p>
+
+          ${
+            first.organizer
+              ? `
+          <p>
+             <img src="/resources/images/organisateur-b-64.png" alt="" draggable="false" />
+            ${first.organizer}
+          </p>
+          `
+              : ""
+          }
+
           <p>
             <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
             ${start.toLocaleDateString([], {
@@ -67,6 +81,7 @@ function loadCalendar(room) {
             </p>
             <p>
           </p>
+
         </div>`;
 
       // Composants de la barre de progression
@@ -101,7 +116,6 @@ function loadCalendar(room) {
             Math.min(100, ((now - start) / (end - start)) * 100)
           );
           const bar = progressBar.querySelector("#progress-bar");
-          const barNumber = countdownBar.querySelector("#progress-bar-number");
           bar.style.width = percent + "%";
 
           let msLeft = end - now;
@@ -158,8 +172,9 @@ function loadCalendar(room) {
           }
 
           row.innerHTML = `
-             <p> 
+            <div class="test">
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
+             <p> 
               ${new Date(event.start).toLocaleDateString([], {
                 day: "2-digit",
                 month: "2-digit",
@@ -174,11 +189,29 @@ function loadCalendar(room) {
               })} &nbsp; 
           ${conflitHtml}
             </p>
+            </div>
 
+            <div class="test">
+            ${
+              event.organizer && event.organizer.trim().length > 0
+                ? `
 
+              <img src="/resources/images/organisateur-w-64.png" alt="" draggable="false" />
             <p class="summary-event"> 
-              ${event.summary}
+              ${event.organizer || ""}
             </p>
+
+            `
+                : ""
+            }
+            </div>
+
+            <div class="test">
+                <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
+              <p class="summary-event"> 
+                ${event.summary || ""}
+              </p>
+            </div>
 
           `;
           // Ajout de l'événement panneau secondaire
