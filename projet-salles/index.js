@@ -1,6 +1,9 @@
 const express = require("express");
+const helmet = require("helmet");
 const app = express();
+const PORT = process.env.PORT || 3000;
 
+app.use(helmet());
 app.use(express.static("public"));
 
 // Import des routes
@@ -12,6 +15,6 @@ app.use("/api", apiRoutes);
 app.use("/", frontendRoutes);
 
 // Démarrage de l'application en local
-app.listen(3000, () => {
-  console.log(`✅ Port: 3000`);
+app.listen(PORT, () => {
+  console.log(`✅ Port: ${PORT}`);
 });
