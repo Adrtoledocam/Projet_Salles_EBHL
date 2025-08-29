@@ -197,6 +197,13 @@ function loadCalendar(room) {
             </div>
 
             <div class="event-info">
+              <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
+              <p class="summary-event"> 
+                ${event.summary || ""}
+              </p>
+            </div>
+
+            <div class="event-info">
             ${
               event.organizer && event.organizer.trim().length > 0
                 ? `<img src="/resources/images/organisateur-w-64.png" alt="" draggable="false" />
@@ -207,12 +214,7 @@ function loadCalendar(room) {
             }
             </div>
 
-            <div class="event-info">
-              <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
-              <p class="summary-event"> 
-                ${event.summary || ""}
-              </p>
-            </div>
+ 
           `;
           // Ajout de l'événement panneau secondaire
           secondInfo.appendChild(row);
