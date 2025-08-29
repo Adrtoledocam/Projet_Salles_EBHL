@@ -169,14 +169,14 @@ body {
   align-self: center;
 }
 
-.bottom .events .event .test {
+.bottom .events .event .event-info {
   width: 100%;
   align-self: center;
   display: flex;
   color: var(--eh-white);
 }
 
-.bottom .events .event .test img {
+.bottom .events .event .event-info img {
   width: 35px;
   height: 35px;
   padding: 10px;

@@ -5,14 +5,9 @@ const secondInfo = document.querySelector(".events"); // Panneau secondaire (dro
 const selectedRoom = document.getElementById("calendar-select"); // Sélecteur de salle (liste)
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
 
-// Mise à jour de l'heure et rafraîchissement de la page chaque minutes
-setInterval(() => {
-  let date = new Date();
-}, 2);
-
 // Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
-  // Récupération du lien de la salle depuis le fichier roomsData.js
+  // Récupération de la salle depuis le fichier de données
   const site = ROOMS_DATA[room]?.site || "pga";
   axios
     .get(`/api/calendar/${site}/${room}`)
@@ -22,7 +17,6 @@ function loadCalendar(room) {
       // Si aucun événement n'est trouvé
       if (events.length === 0) {
         mainInfo.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
-        secondInfo.innerHTML = "<h2> </h2>";
 
         // Statut de la salle
         roomStatus.textContent = "Libre";
@@ -35,7 +29,7 @@ function loadCalendar(room) {
       const now = new Date();
       const start = new Date(first.start);
       const end = new Date(first.end);
-      const isInProgress = now >= start && now <= end; // Vérifie si l'événement est en cours
+      const isInProgress = now >= start && now <= end; // Booléen: Vérifie si l'événement est en cours
 
       // Statut de la salle
       roomStatus.textContent = isInProgress ? "Occupée" : "Libre";
@@ -45,23 +39,22 @@ function loadCalendar(room) {
       mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
-                  
-
            <p>
              <img src="/resources/images/meeting-b-64.png" alt="" draggable="false" />
             ${first.summary}
           </p>
-
-          ${
-            first.organizer
-              ? `
+          
+       ${
+         // Affichage de l'organisateur de l'événement s'il existe
+         first.organizer
+           ? `
           <p>
              <img src="/resources/images/organisateur-b-64.png" alt="" draggable="false" />
             ${first.organizer}
           </p>
           `
-              : ""
-          }
+           : ""
+       }
 
           <p class="timestamp">
             <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
@@ -84,11 +77,12 @@ function loadCalendar(room) {
 
         </div>`;
 
-      // Composants de la barre de progression
       if (isInProgress) {
+        // Suppression de l'horloge si l'événement est en cours
         const timestamp = document.querySelector(".timestamp");
         timestamp.remove();
 
+        // Composants de la barre de progression
         const progressWrapper = document.createElement("div");
         progressWrapper.classList.add("progress-wrapper");
 
@@ -121,16 +115,16 @@ function loadCalendar(room) {
           const bar = progressBar.querySelector("#progress-bar");
           const barNumber = countdownBar.querySelector("#progress-bar-number");
           bar.style.width = percent + "%";
+          barNumber.style.color = "#414141";
 
           let msLeft = end - now;
           if (msLeft < 0) msLeft = 0;
 
-          let timeText =
-            // Affichage du temps restant et changement de la couleur de la barre
-            (barNumber.textContent =
-              end.getHours().toString().padStart(2, "0") +
-              ":" +
-              end.getMinutes().toString().padStart(2, "0"));
+          // Affichage du temps restant et changement de la couleur de la barre
+          barNumber.textContent =
+            end.getHours().toString().padStart(2, "0") +
+            ":" +
+            end.getMinutes().toString().padStart(2, "0");
 
           if (msLeft <= 10 * 60 * 1000) {
             bar.style.backgroundColor = "#d4583b";
@@ -150,6 +144,7 @@ function loadCalendar(room) {
       // Affichage des événements suivants
       if (events.length > 1) {
         secondInfo.innerHTML = "<h2>Événements à venir</h2>";
+
         // Suppression du premier événement, car il a déjà été affiché précédemment
         events.slice(1).forEach((event) => {
           const row = document.createElement("div");
@@ -161,20 +156,25 @@ function loadCalendar(room) {
           // Gestion des conflits si un événement se produit en même temps qu'un autre
           let conflitHtml = "";
           if (now >= eventStart && now <= eventEnd) {
-            conflitHtml = `
-        
-          <span style="color: #d4583b; font-weight: bold;">En cours</span>
-      `;
+            conflitHtml = `<span style="color: #d4583b; font-weight: bold;">En cours</span>`;
           }
 
           row.innerHTML = `
-            <div class="test">
+            <div class="event-info">
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
-             <p> 
+              <p>${conflitHtml}
+
+             ${
+               // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
+               !conflitHtml && !conflitHtml.trim().length > 0
+                 ? `
               ${new Date(event.start).toLocaleDateString([], {
                 day: "2-digit",
                 month: "2-digit",
               })} &nbsp; 
+            `
+                 : "|"
+             }
               ${new Date(event.start).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -183,32 +183,26 @@ function loadCalendar(room) {
                 hour: "2-digit",
                 minute: "2-digit",
               })} &nbsp; 
-          ${conflitHtml}
             </p>
             </div>
 
-            <div class="test">
+            <div class="event-info">
             ${
               event.organizer && event.organizer.trim().length > 0
-                ? `
-
-              <img src="/resources/images/organisateur-w-64.png" alt="" draggable="false" />
-            <p class="summary-event"> 
-              ${event.organizer || ""}
-            </p>
-
-            `
+                ? `<img src="/resources/images/organisateur-w-64.png" alt="" draggable="false" />
+                <p class="summary-event"> 
+                  ${event.organizer || ""}
+                </p>`
                 : ""
             }
             </div>
 
-            <div class="test">
-                <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
+            <div class="event-info">
+              <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
               <p class="summary-event"> 
                 ${event.summary || ""}
               </p>
             </div>
-
           `;
           // Ajout de l'événement panneau secondaire
           secondInfo.appendChild(row);

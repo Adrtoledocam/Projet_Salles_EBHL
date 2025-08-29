@@ -9,7 +9,6 @@ async function fetchICSData(room) {
   if (!url) {
     throw new Error("Le nom de salle est incorrect/inexistant.");
   }
-
   const response = await axios.get(url);
   const data = ical.parseICS(response.data); // Transformation des données ICS en object JS
   const now = new Date();

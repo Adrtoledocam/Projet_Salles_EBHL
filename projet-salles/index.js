@@ -3,7 +3,18 @@ const helmet = require("helmet");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(helmet());
+// Sécurité HTTP avec Helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        frameSrc: ["'self'", "https://www.zeitverschiebung.net"],
+        scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+      },
+    },
+  })
+);
 app.use(express.static("public"));
 
 // Import des routes

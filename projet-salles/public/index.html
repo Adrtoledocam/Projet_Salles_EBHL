@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/styles/style.css" />
     <link rel="icon" type="image/png" href="/resources/images/favicon.png" />
     <script type="module" src="/resources/scripts/main.js"></script>
+    <script type="module" src="/resources/scripts/init.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -148,51 +149,5 @@
       <!-- Partie de droite -->
       <div class="events"></div>
     </div>
-
-    <!-- Mise à jour de l'URL et des données lors du changement de salle/URL -->
-    <script type="module">
-      import { ROOMS_DATA } from "/controllers/roomsData.js";
-
-      // Récupération des informations sur le site et le nom de la salle depuis l'URL
-      const pathParts = window.location.pathname.split("/");
-      const site = pathParts[1] || "pga";
-      const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
-
-      // Mise à jour du titre de la salle
-      document.getElementById("calendar-select").value = salleId;
-      fetchData(site, salleId);
-
-      // Mise à jour de l'URL lors du changement de salle depuis la liste déroulante
-      document
-        .getElementById("calendar-select")
-        .addEventListener("change", (e) => {
-          const newSalle = e.target.value;
-          const newSite = ROOMS_DATA[newSalle]?.site || "pga";
-          window.location.href = `/${newSite}/${newSalle}`;
-        });
-
-      async function fetchData(site, id) {
-        const res = await fetch(`/api/calendar/${site}/${id}`);
-        const events = await res.json();
-      }
-
-      const root = document.documentElement;
-      const logo = document.getElementById("site-logo");
-
-      // Mise à jour du style et du logo en fonction du site
-      switch (site) {
-        case "ebhl":
-          root.style.setProperty("--main-color", "#f59e00");
-          logo.src = "/resources/images/ebhl.png";
-          break;
-        case "cdg":
-          root.style.setProperty("--main-color", "#cb0447");
-          logo.src = "/resources/images/cdg.png";
-          break;
-        default:
-          root.style.setProperty("--main-color", "#003595");
-          logo.src = "/resources/images/pga.png";
-      }
-    </script>
   </body>
 </html>

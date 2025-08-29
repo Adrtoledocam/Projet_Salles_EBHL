@@ -2,8 +2,16 @@ const mysql = require("mysql2");
 
 require("dotenv").config();
 
-// Informations de connexion à la base de données de staging
 function setDbConfig(host) {
+  if (
+    !process.env.DB_USER ||
+    !process.env.DB_PWD ||
+    !process.env.DB_PORT ||
+    !process.env.DB_NAME
+  ) {
+    throw new Error("Impossible de charger les variables d'environnement.");
+  }
+
   const pool = mysql.createPool({
     host: host,
     user: process.env.DB_USER,
