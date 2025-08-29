@@ -10,7 +10,7 @@ Afin d’améliorer l’organisation et la communication autour de l’occupatio
 6. Profitez du site en vous rendant [ici](http://localhost:80).
 
 ## Aperçu du projet (salle libre)
-<img width="670" height="399" alt="Aperçu du projet (salle libre)" src="https://github.com/user-attachments/assets/99b5ffc8-eb32-4bc5-b7a4-359b7ce57511" />
+<img width="670" height="399" alt="Aperçu du projet (salle libre)" src="https://github.com/user-attachments/assets/cb326dc8-e3e3-4c37-aa66-b92392cddc86" />
 
 ## Aperçu du projet (salle occupée)
-<img width="670" height="399" alt="Aperçu du projet (salle occupée)" src="https://github.com/user-attachments/assets/ecead021-5c09-46e6-bb95-16d9445da5b8" />
+<img width="670" height="399" alt="Aperçu du projet (salle occupée)" src="https://github.com/user-attachments/assets/a4c99d06-b9bb-484f-930d-024400e2047d" />
