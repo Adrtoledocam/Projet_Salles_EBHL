@@ -156,7 +156,7 @@ function loadCalendar(room) {
           // Gestion des conflits si un événement se produit en même temps qu'un autre
           let conflitHtml = "";
           if (now >= eventStart && now <= eventEnd) {
-            conflitHtml = `<span style="color: #d4583b; font-weight: bold;">En cours</span>`;
+            conflitHtml = `<span style="color: #f4f4f8; font-weight: bold; text-decoration: underline;">En cours</span>`;
           }
 
           row.innerHTML = `
@@ -173,7 +173,7 @@ function loadCalendar(room) {
                 month: "2-digit",
               })} &nbsp; 
             `
-                 : "|"
+                 : "&nbsp;"
              }
               ${new Date(event.start).toLocaleTimeString([], {
                 hour: "2-digit",
