@@ -63,7 +63,7 @@ function loadCalendar(room) {
               : ""
           }
 
-          <p>
+          <p class="timestamp">
             <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
             ${start.toLocaleDateString([], {
               day: "2-digit",
@@ -86,6 +86,9 @@ function loadCalendar(room) {
 
       // Composants de la barre de progression
       if (isInProgress) {
+        const timestamp = document.querySelector(".timestamp");
+        timestamp.remove();
+
         const progressWrapper = document.createElement("div");
         progressWrapper.classList.add("progress-wrapper");
 
@@ -101,7 +104,7 @@ function loadCalendar(room) {
         const countdownBar = document.createElement("div");
         countdownBar.classList.add("progress-countdown");
         countdownBar.innerHTML = `
-        <div id="progress-bar-number"></div>`;
+        <div id="progress-bar-number" style="font-size:1.5rem;"></div>`;
 
         progressWrapper.appendChild(progressBarLogo);
         progressWrapper.appendChild(progressBar);
@@ -116,26 +119,19 @@ function loadCalendar(room) {
             Math.min(100, ((now - start) / (end - start)) * 100)
           );
           const bar = progressBar.querySelector("#progress-bar");
+          const barNumber = countdownBar.querySelector("#progress-bar-number");
           bar.style.width = percent + "%";
 
           let msLeft = end - now;
           if (msLeft < 0) msLeft = 0;
 
-          const totalSeconds = Math.floor(msLeft / 1000);
-          const hours = Math.floor(totalSeconds / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          const seconds = totalSeconds % 60;
+          let timeText =
+            // Affichage du temps restant et changement de la couleur de la barre
+            (barNumber.textContent =
+              end.getHours().toString().padStart(2, "0") +
+              ":" +
+              end.getMinutes().toString().padStart(2, "0"));
 
-          let timeText = "";
-          if (hours > 0) {
-            timeText = `${hours}:${minutes
-              .toString()
-              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-          } else {
-            timeText = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-          }
-
-          // Affichage du temps restant et changement de la couleur de la barre
           if (msLeft <= 10 * 60 * 1000) {
             bar.style.backgroundColor = "#d4583b";
           } else {
