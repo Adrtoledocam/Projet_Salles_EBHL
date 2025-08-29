@@ -161,7 +161,17 @@ function loadCalendar(room) {
 
           row.innerHTML = `
             <div class="event-info">
+
+
+              ${
+                // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
+                !conflitHtml && !conflitHtml.trim().length > 0
+                  ? `
               <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
+    `
+                  : `<img src="/resources/images/processing-w-64.png" alt="" draggable="false" />`
+              }
+
               <p>${conflitHtml}
 
              ${
@@ -173,7 +183,7 @@ function loadCalendar(room) {
                 month: "2-digit",
               })} &nbsp; 
             `
-                 : "&nbsp;"
+                 : "&nbsp; "
              }
               ${new Date(event.start).toLocaleTimeString([], {
                 hour: "2-digit",
