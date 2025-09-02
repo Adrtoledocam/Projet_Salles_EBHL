@@ -3,7 +3,7 @@ import { ROOMS_DATA } from "/controllers/roomsData.js";
 // Récupération des informations sur le site et le nom de la salle depuis l'URL
 const pathParts = window.location.pathname.split("/");
 const site = pathParts[1] || "pga";
-const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
+const salleId = pathParts[2] || "Default";
 
 // Mise à jour du titre de la salle
 document.getElementById("calendar-select").value = salleId;

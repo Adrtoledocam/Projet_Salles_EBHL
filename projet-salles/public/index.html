@@ -25,16 +25,23 @@
           <!-- Liste déroulante pour le choix de salle -->
           <div class="selector">
             <select id="calendar-select">
-              <option disabled><--- LAUSANNE EAU ---></option>
+              <option disabled><--- Accueil ---></option>
+
+              <option disabled value="Default">
+                Sélectionnez une salle...
+              </option>
+
+              <option disabled id="ebhl"><--- Lausanne ---></option>
+              <option disabled id="ebhl">Eau-Vive</option>
               <option value="Salle_Victoria">Salle Victoria</option>
 
-              <option disabled><--- LAUSANNE MDC ---></option>
+              <option disabled id="ebhl">Maison des Chavannes</option>
               <option value="Salle_des_Pas_Perdus">Salle des Pas Perdus</option>
               <option value="Salle_Julie_Hofmann">Salle Julie Hofmann</option>
               <option value="Salle_Marcel_Jordan">Salle Marcel Jordan</option>
               <option value="Salle_New-York">Salle New-York</option>
 
-              <option disabled><--- LAUSANNE MJH ---></option>
+              <option disabled id="ebhl">Maison Julie Hofmann</option>
               <option value="Salle_de_culte_MJH">Salle de culte MJH</option>
               <option value="Salle_Oceane">Salle Océane</option>
               <option value="Tente_exterieure_Musardiere">
@@ -43,7 +50,7 @@
               <option value="Bureau_Aumoniers-MJH">Bureau Aumôniers-MJH</option>
               <option value="Bureau_CDL-MJH">Bureau CDL-MJH</option>
 
-              <option disabled><--- LAUSANNE PRA ---></option>
+              <option disabled id="ebhl">Lausanne Prairie</option>
               <option value="Chambre_collaborateur">
                 Chambre collaborateur
               </option>
@@ -53,7 +60,7 @@
               <option value="Salle_Multimedia_CDL">Salle Multimédia CDL</option>
               <option value="Salon">Salon</option>
 
-              <option disabled><--- CITE DU GENEVRIER ---></option>
+              <option disabled id="cdg"><--- Cité du Genévrier ---></option>
               <option value="Exploration_sensorielle_grande">
                 Exploration sensorielle - grande salle
               </option>
@@ -84,31 +91,30 @@
                 Salle Willy Fruttiger 20-30 personnes
               </option>
 
-              <option disabled><--- PGA BEAU-SITE ---></option>
+              <option disabled id="pga"><--- Pôle Grand Âge ---></option>
+              <option disabled id="pga">Beau-Site</option>
               <option value="Salle_PGA_Beau-Site_Vignerons">
-                Beau-Site - Salle des Vignerons
+                Salle des Vignerons
               </option>
               <option value="Salle_PGA_Beau-Site_Colloque">
-                Beau-Site - Salle Colloque
+                Salle Colloque
               </option>
               <option value="Salle_PGA_Beau-Site_Espace-Felix">
-                Beau-Site - Salle Espace Felix
+                Salle Espace Felix
               </option>
               <option value="Salle_PGA_Beau-Site_Quart-DHeure-Vaudois">
-                Beau-Site - Salle Quart d'heure Vaudois
+                Salle Quart d'heure Vaudois
               </option>
-              <option value="Salle_PGA_Beau-Site_Veranda">
-                Beau-Site - Salle Véranda
-              </option>
+              <option value="Salle_PGA_Beau-Site_Veranda">Salle Véranda</option>
 
-              <option disabled><--- PGA BONNETTES ---></option>
+              <option disabled id="pga">Bonnettes</option>
               <option value="Salle_PGA_Bonnettes_Colloque">
-                Bonnettes - Salle Colloque
+                Salle Colloque
               </option>
 
-              <option disabled><--- PGA COTEAU-MURAZ ---></option>
+              <option disabled id="pga">Coteau-Muraz</option>
               <option value="Salle_PGA_Coteau-Muraz_Colloque">
-                Coteau-Muraz - Salle Colloque
+                Salle Colloque
               </option>
             </select>
           </div>

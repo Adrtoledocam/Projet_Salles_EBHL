@@ -78,8 +78,22 @@ body {
   font-weight: 500;
   color: var(--eh-gray);
 }
+.header .selector #calendar-select option[disabled] {
+  font-weight: 600;
+}
 
-/* Bas de la page */
+.header .selector #calendar-select #ebhl {
+  color: #f59e00;
+}
+
+.header .selector #calendar-select #cdg {
+  color: #cb0447;
+}
+
+.header .selector #calendar-select #pga {
+  color: #003595;
+}
+
 .bottom {
   display: flex;
   font-size: 1.125rem;

@@ -231,7 +231,7 @@ function loadCalendar(room) {
 
 // Récupération du nom de la salle depuis l'URL, par défaut Salle_PGA_Beau-Site_Vignerons
 const pathParts = window.location.pathname.split("/");
-const salleId = pathParts[2] || "Salle_PGA_Beau-Site_Vignerons";
+const salleId = pathParts[2] || "Default";
 
 selectedRoom.value = salleId;
 // Initialisation du calendrier

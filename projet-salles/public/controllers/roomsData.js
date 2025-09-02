@@ -1,4 +1,10 @@
 export const ROOMS_DATA = {
+  // <--- PGA COTEAU-MURAZ --->
+  Default: {
+    url: "",
+    site: "pga",
+  },
+
   // <--- LAUSANNE EAU --->
   Salle_Victoria: {
     url: "https://exchange.eben-hezer.ch/OWA/calendar/9e3ef3231e6d44898aa2aa0943be4f26@eben-hezer.ch/f0e985e4302d42098e368dd8def1e47b9444836960257549334/calendar.ics",
