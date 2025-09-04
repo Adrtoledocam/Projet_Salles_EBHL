@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 require("dotenv").config();
 
@@ -12,7 +12,7 @@ function setDbConfig(host) {
     throw new Error("Impossible de charger les variables d'environnement.");
   }
 
-  const pool = mysql.createPool({
+  return mysql.createPool({
     host: host,
     user: process.env.DB_USER,
     password: process.env.DB_PWD,
@@ -22,8 +22,6 @@ function setDbConfig(host) {
     connectionLimit: 10,
     queueLimit: 0,
   });
-
-  return pool.promise();
 }
 
 const db_ebhl = setDbConfig(process.env.EB_HOST);

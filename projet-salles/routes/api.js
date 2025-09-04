@@ -11,11 +11,13 @@ router.get("/calendar/:site/:room", async (req, res) => {
 
     // Récupération des événements depuis la DB pour EBHL/CDG
     if (!ROOMS_DATA[room]?.url) {
-      let DB = "";
-      if (site == "ebhl") {
+      let DB;
+      if (site === "ebhl") {
         DB = db_ebhl;
-      } else if (site == "cdg") {
+      } else if (site === "cdg") {
         DB = db_cdg;
+      } else {
+        return res.status(400).json({ error: `Site inconnu: ${site}` });
       }
 
       // Requête SQL pour récupérer les événements de la salle sélectionnée
