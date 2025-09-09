@@ -27,7 +27,9 @@ async function fetchICSData(room) {
       searchRangeStart.setHours(0, 0, 0, 0);
 
       // On va créer les événements qui se répèten pour le mois en cours
-      const searchRangeEnd = new Date(now.getFullYear(), now.getMonth() + 1);
+      const searchRangeEnd = new Date(searchRangeStart);
+      searchRangeEnd.setDate(searchRangeEnd.getDate() + 14);
+
       const rruleEvents = e.rrule.between(
         searchRangeStart,
         searchRangeEnd,
@@ -37,7 +39,7 @@ async function fetchICSData(room) {
 
       for (const rrE of rruleEvents) {
         const rreEnd = new Date(rrE.getTime() + eventDuration);
-        if (rreEnd <= now) continue; // Si l'événement est annulé, on l'ignore
+        if (rreEnd <= now) continue;
 
         // Envoi de l'événement dans le tableau
         results.push({
@@ -47,7 +49,7 @@ async function fetchICSData(room) {
         });
       }
     } else {
-      if (e.end <= now) continue; // Si l'événement est terminé, on l'ignore
+      if (e.end <= now) continue;
 
       // Envoi de l'événement dans le tableau
       results.push({
@@ -58,7 +60,7 @@ async function fetchICSData(room) {
     }
   }
 
-  results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
+  results.sort((a, b) => a.start.getTime() - b.start.getTime());
 
   return results.slice(0, 4); // On ne garde que les 4 premiers événements
 }
