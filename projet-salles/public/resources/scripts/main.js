@@ -35,6 +35,13 @@ function loadCalendar(room) {
       roomStatus.textContent = isInProgress ? "Occupée" : "Libre";
       roomStatus.className = isInProgress ? "occupee" : "libre";
 
+      // Fonction pour formater l'heure
+      function formatUTCTime(date) {
+        const hours = String(date.getUTCHours()).padStart(2, "0");
+        const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+        return `${hours}:${minutes}`;
+      }
+
       // Affichage de l'événement principal
       mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
@@ -63,14 +70,7 @@ function loadCalendar(room) {
               month: "2-digit",
             })}  &nbsp; 
 
-            ${start.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })} - 
-            ${end.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            ${formatUTCTime(start)} - ${formatUTCTime(end)}
             </p>
             <p>
           </p>
@@ -185,14 +185,9 @@ function loadCalendar(room) {
             `
                  : "&nbsp; "
              }
-              ${new Date(event.start).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })} - 
-              ${new Date(event.end).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })} &nbsp; 
+              ${formatUTCTime(new Date(event.start))} - ${formatUTCTime(
+            new Date(event.end)
+          )} &nbsp; 
             </p>
             </div>
 
