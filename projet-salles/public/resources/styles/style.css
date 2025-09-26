@@ -41,7 +41,8 @@ marquee {
 }
 
 /* Corps de la page */
-body {
+body,
+::backdrop {
   border: 0;
   padding: 0;
   margin: 0;
