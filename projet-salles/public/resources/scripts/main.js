@@ -5,6 +5,10 @@ const secondInfo = document.querySelector(".events"); // Panneau secondaire (dro
 const selectedRoom = document.getElementById("calendar-select"); // Sélecteur de salle (liste)
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
 
+document.getElementById("clock").addEventListener("click", (e) => {
+  document.body.requestFullscreen();
+});
+
 // Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
   // Récupération de la salle depuis le fichier de données
@@ -35,13 +39,6 @@ function loadCalendar(room) {
       roomStatus.textContent = isInProgress ? "Occupée" : "Libre";
       roomStatus.className = isInProgress ? "occupee" : "libre";
 
-      // Fonction pour formater l'heure
-      function formatUTCTime(date) {
-        const hours = String(date.getUTCHours()).padStart(2, "0");
-        const minutes = String(date.getUTCMinutes()).padStart(2, "0");
-        return `${hours}:${minutes}`;
-      }
-
       // Affichage de l'événement principal
       mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
@@ -65,12 +62,21 @@ function loadCalendar(room) {
 
           <p class="timestamp">
             <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
-            ${start.toLocaleDateString([], {
-              day: "2-digit",
-              month: "2-digit",
-            })}  &nbsp; 
+             ${new Date(start).toLocaleDateString([], {
+               day: "2-digit",
+               month: "2-digit",
+             })}
+            &nbsp;
+            ${start.toLocaleString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}   -
+         ${end.toLocaleString([], {
+           hour: "2-digit",
+           minute: "2-digit",
+         })}  &nbsp; 
 
-            ${formatUTCTime(start)} - ${formatUTCTime(end)}
+
             </p>
             <p>
           </p>
@@ -185,9 +191,16 @@ function loadCalendar(room) {
             `
                  : "&nbsp; "
              }
-              ${formatUTCTime(new Date(event.start))} - ${formatUTCTime(
-            new Date(event.end)
-          )} &nbsp; 
+              ${new Date(event.start).toLocaleString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })} - ${new Date(event.end).toLocaleString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })} 
+          
+          
+          &nbsp; 
             </p>
             </div>
 
