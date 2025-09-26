@@ -11,6 +11,7 @@ app.use(
         defaultSrc: ["'self'"],
         frameSrc: ["'self'", "https://www.zeitverschiebung.net"],
         scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+        connectSrc: ["'self'", "https://cdn.jsdelivr.net"],
       },
     },
   })
