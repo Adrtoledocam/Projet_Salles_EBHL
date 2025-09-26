@@ -146,7 +146,7 @@ export const ROOMS_DATA = {
     site: "pga",
   },
   "Salle_PGA_Beau-Site_Quart-DHeure-Vaudois": {
-    url: "http://exchange.eben-hezer.ch/owa/calendar/86fa51c8269f4906871ff9c78da70d42@eben-hezer.ch/94a4200763ef454da2ba6cf198484cfd12839416324990970364/calendar.ics",
+    url: "http://exchange.eben-hezer.ch/owa/calendar/86fa51c8269f4906871ff9c78da70d42@eben-hezer.ch/3eb994d2d9a5440a8055c8de5dbe4fc23919653016582881564/calendar.ics",
     site: "pga",
   },
   "Salle_PGA_Beau-Site_Veranda": {
