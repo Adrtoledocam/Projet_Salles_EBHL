@@ -44,7 +44,7 @@ function loadCalendar(room) {
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
            <p>
-             <img src="/resources/images/meeting-b-64.png" alt="" draggable="false" />
+             <img src="/resources/images/meeting-b-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
             ${first.summary}
           </p>
           
@@ -53,7 +53,7 @@ function loadCalendar(room) {
          first.organizer
            ? `
           <p>
-             <img src="/resources/images/organisateur-b-64.png" alt="" draggable="false" />
+             <img src="/resources/images/organisateur-b-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
             ${first.organizer}
           </p>
           `
@@ -61,7 +61,7 @@ function loadCalendar(room) {
        }
 
           <p class="timestamp">
-            <img src="/resources/images/calendrier-b-64.png" alt="" draggable="false" />
+            <img src="/resources/images/calendrier-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
              ${new Date(start).toLocaleDateString([], {
                day: "2-digit",
                month: "2-digit",
@@ -94,7 +94,7 @@ function loadCalendar(room) {
 
         const progressBarLogo = document.createElement("div");
         progressBarLogo.innerHTML = `
-        <img src="/resources/images/sablier-b-64.png" alt="" draggable="false" class="progress-logo"  />`;
+        <img src="/resources/images/sablier-b-64.png" alt="Sablier pour indiquer que l'événement est en cours" draggable="false" class="progress-logo"  />`;
 
         const progressBar = document.createElement("div");
         progressBar.classList.add("progress-container");
@@ -173,9 +173,9 @@ function loadCalendar(room) {
                 // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
                 !conflitHtml && !conflitHtml.trim().length > 0
                   ? `
-              <img src="/resources/images/calendrier-w-64.png" alt="" draggable="false" />
+              <img src="/resources/images/calendrier-w-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
     `
-                  : `<img src="/resources/images/processing-w-64.png" alt="" draggable="false" />`
+                  : `<img src="/resources/images/processing-w-64.png" alt="Deux flèches tourant en rond pour indiquer qu'un deuxième événement est en cours en même temps" draggable="false" />`
               }
 
               <p>${conflitHtml}
@@ -205,7 +205,7 @@ function loadCalendar(room) {
             </div>
 
             <div class="event-info">
-              <img src="/resources/images/meeting-w-64.png" alt="" draggable="false" />
+              <img src="/resources/images/meeting-w-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
               <p class="summary-event"> 
                 ${event.summary || ""}
               </p>
@@ -214,7 +214,7 @@ function loadCalendar(room) {
             <div class="event-info">
             ${
               event.organizer && event.organizer.trim().length > 0
-                ? `<img src="/resources/images/organisateur-w-64.png" alt="" draggable="false" />
+                ? `<img src="/resources/images/organisateur-w-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
                 <p class="summary-event"> 
                   ${event.organizer || ""}
                 </p>`
