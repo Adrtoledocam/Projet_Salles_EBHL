@@ -28,13 +28,19 @@ async function fetchICSData(room) {
 
       // On va créer les événements qui se répèten pour le mois en cours
       const searchRangeEnd = new Date(searchRangeStart);
-      searchRangeEnd.setDate(searchRangeEnd.getDate() + 28);
+      searchRangeEnd.setDate(searchRangeEnd.getDate() + 31);
 
       const rruleEvents = e.rrule.between(
         searchRangeStart,
         searchRangeEnd,
         true
       );
+
+      // On ajoute le dernier élément récurrent s'il est dans la période
+      if (e.rrule.options.until && e.rrule.options.until <= searchRangeEnd) {
+        rruleEvents.push(e.rrule.options.until);
+      }
+
       const eventDuration = e.end - e.start;
 
       for (const rrE of rruleEvents) {
