@@ -97,7 +97,7 @@ async function fetchDBData(events) {
 
   results.sort((a, b) => a.start - b.start); // Tri dans l'ordre chronologique
 
-  return results.slice(0, 3); // On ne garde que les 4 premiers événements
+  return results.slice(0, 4); // On ne garde que les 4 premiers événements
 }
 
 module.exports = { fetchICSData, fetchDBData };
