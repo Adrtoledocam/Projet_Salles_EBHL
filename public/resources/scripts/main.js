@@ -6,7 +6,7 @@ const selectedRoom = document.getElementById("calendar-select"); // Sélecteur d
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
 const clock = document.getElementById("clock");
 
-window.open("index.html", "", "fullscreen=yes");
+window.open("index.html", "fullscreen=yes");
 
 setInterval(() => {
   let date = new Date();
