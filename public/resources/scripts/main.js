@@ -4,10 +4,16 @@ const mainInfo = document.querySelector(".info-main"); // Panneau principal (gau
 const secondInfo = document.querySelector(".events"); // Panneau secondaire (droite)
 const selectedRoom = document.getElementById("calendar-select"); // Sélecteur de salle (liste)
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
+const clock = document.getElementById("clock");
 
-document.getElementById("clock").addEventListener("click", (e) => {
-  document.body.requestFullscreen();
-});
+setInterval(() => {
+  let date = new Date();
+  clock.innerHTML = date.toLocaleTimeString("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+}, 2);
 
 // Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
@@ -149,7 +155,7 @@ function loadCalendar(room) {
 
       // Affichage des événements suivants
       if (events.length > 1) {
-        secondInfo.innerHTML = "<h2>Événements à venir</h2>";
+        secondInfo.innerHTML = "<h2></h2>";
 
         // Suppression du premier événement, car il a déjà été affiché précédemment
         events.slice(1).forEach((event) => {
