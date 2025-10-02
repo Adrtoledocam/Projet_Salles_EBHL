@@ -72,7 +72,7 @@ function loadCalendar(room) {
 
           <p class="timestamp">
             <img src="/resources/images/calendrier-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
-             ${new Date(start).toLocaleDateString([], {
+             ${new Date(start).toLocaleDateString("fr-FR", {
                day: "2-digit",
                month: "2-digit",
              })}
@@ -194,7 +194,7 @@ function loadCalendar(room) {
                // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
                !conflitHtml && !conflitHtml.trim().length > 0
                  ? `
-              ${new Date(event.start).toLocaleDateString([], {
+              ${new Date(event.start).toLocaleDateString("fr-FR", {
                 day: "2-digit",
                 month: "2-digit",
               })} &nbsp; 
