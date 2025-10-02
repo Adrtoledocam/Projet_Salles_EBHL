@@ -6,9 +6,7 @@ const selectedRoom = document.getElementById("calendar-select"); // Sélecteur d
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
 const clock = document.getElementById("clock");
 
-document.getElementById("clock").addEventListener("click", (e) => {
-  document.body.requestFullscreen();
-});
+document.getElementById("clock").addEventListener("click", (e) => {});
 
 setInterval(() => {
   let date = new Date();
@@ -258,4 +256,5 @@ loadCalendar(selectedRoom.value);
 // Mise à jour des données du calendrier chaque 5 secondes
 setInterval(() => {
   loadCalendar(selectedRoom.value);
+  document.body.requestFullscreen();
 }, 5000);
