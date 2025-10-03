@@ -83,6 +83,10 @@ body,
   font-weight: 600;
 }
 
+.header .selector #calendar-select {
+  outline: none;
+}
+
 .header .selector #calendar-select #ebhl {
   color: #f1ab00;
 }
