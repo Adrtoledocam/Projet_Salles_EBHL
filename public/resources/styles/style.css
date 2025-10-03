@@ -84,7 +84,7 @@ body,
 }
 
 .header .selector #calendar-select #ebhl {
-  color: #f59e00;
+  color: #f1ab00;
 }
 
 .header .selector #calendar-select #cdg {
@@ -92,7 +92,7 @@ body,
 }
 
 .header .selector #calendar-select #pga {
-  color: #003595;
+  color: #003596;
 }
 
 .bottom {
@@ -268,7 +268,6 @@ body,
 #progress-bar {
   height: 30px;
   width: 0%;
-  background-color: #007bff;
   color: white;
   text-align: center;
   line-height: 30px;
