@@ -224,6 +224,7 @@ body,
   font-size: 4rem;
   font-weight: 500;
   color: rgb(65, 65, 65);
+  padding-right: 10px;
 }
 
 /* Styla barre de progression */
