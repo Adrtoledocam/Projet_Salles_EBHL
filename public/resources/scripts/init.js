@@ -27,14 +27,14 @@ const logo = document.getElementById("site-logo");
 // Mise à jour du style et du logo en fonction du site
 switch (site) {
   case "ebhl":
-    root.style.setProperty("--main-color", "#f59e00");
+    root.style.setProperty("--main-color", "#F1AB00");
     logo.src = "/resources/images/ebhl.png";
     break;
   case "cdg":
-    root.style.setProperty("--main-color", "#cb0447");
+    root.style.setProperty("--main-color", "#CB0447");
     logo.src = "/resources/images/cdg.png";
     break;
   default:
-    root.style.setProperty("--main-color", "#003595");
+    root.style.setProperty("--main-color", "#003596");
     logo.src = "/resources/images/pga.png";
 }
