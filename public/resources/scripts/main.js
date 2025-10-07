@@ -159,7 +159,7 @@ function loadCalendar(room) {
 
       // Affichage des événements suivants
       if (events.length > 1) {
-        secondInfo.innerHTML = "<h2></h2>";
+        secondInfo.innerHTML = "";
 
         // Suppression du premier événement, car il a déjà été affiché précédemment
         events.slice(1).forEach((event) => {
@@ -247,7 +247,7 @@ function loadCalendar(room) {
     });
 }
 
-// Récupération du nom de la salle depuis l'URL, par défaut Salle_PGA_Beau-Site_Vignerons
+// Récupération du nom de la salle depuis l'URL
 const pathParts = window.location.pathname.split("/");
 const salleId = pathParts[2] || "Default";
 
