@@ -79,6 +79,9 @@ body,
   font-weight: 500;
   color: var(--eh-gray);
 }
+.header .selector #calendar-select[disabled] {
+  opacity: 100%;
+}
 .header .selector #calendar-select option[disabled] {
   font-weight: 600;
 }
@@ -152,8 +155,8 @@ body,
 }
 
 .bottom .middle .line {
-  height: 100%;
-  margin: 70%;
+  height: 95%;
+  margin: 60%;
   border-left: 7px solid var(--main-color);
 }
 
@@ -161,6 +164,7 @@ body,
 .bottom .events {
   width: 35%;
   text-align: center;
+  margin-top: 18px;
 }
 
 .bottom .events h2 {
@@ -172,7 +176,7 @@ body,
 
 .bottom .events .event {
   padding: 2.5px 20px;
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
   font-weight: 100;
   background-color: var(--main-color);
   border-radius: 15px;
