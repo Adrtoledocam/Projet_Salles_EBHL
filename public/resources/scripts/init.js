@@ -1,5 +1,11 @@
 import { ROOMS_DATA } from "/controllers/roomsData.js";
 
+const select = document.getElementById("calendar-select");
+
+if (window.location.pathname.includes("/Default")) {
+  select.removeAttribute("disabled");
+}
+
 // Récupération des informations sur le site et le nom de la salle depuis l'URL
 const pathParts = window.location.pathname.split("/");
 const site = pathParts[1] || "pga";
