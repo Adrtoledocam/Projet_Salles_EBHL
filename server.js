@@ -28,7 +28,7 @@ async function fetchICSData(room) {
 
       // On va créer les événements qui se répèten pour le mois en cours
       const searchRangeEnd = new Date(searchRangeStart);
-      searchRangeEnd.setDate(searchRangeEnd.getDate() + 31);
+      searchRangeEnd.setDate(searchRangeEnd.getDate() + 45);
 
       const rruleEvents = e.rrule.between(
         searchRangeStart,
@@ -71,7 +71,7 @@ async function fetchICSData(room) {
 
   results.sort((a, b) => a.start.getTime() - b.start.getTime());
 
-  return results.slice(0, 4); // On ne garde que les 4 premiers événements
+  return results.slice(0, 5); // On ne garde que les 4 premiers événements
 }
 
 // Récupération et mise en forme des données suite à leur récupération depuis la base de données
