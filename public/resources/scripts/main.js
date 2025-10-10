@@ -62,7 +62,7 @@ function loadCalendar(room) {
          // Affichage de l'organisateur de l'événement s'il existe
          first.organizer
            ? `
-          <p>
+          <p id="organizer">
              <img src="/resources/images/organisateur-b-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
             ${first.organizer}
           </p>
@@ -85,7 +85,6 @@ function loadCalendar(room) {
            hour: "2-digit",
            minute: "2-digit",
          })}  &nbsp; 
-
 
             </p>
             <p>

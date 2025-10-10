@@ -132,6 +132,12 @@ body,
   display: block;
 }
 
+.bottom .main .info-main #organizer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .bottom .main .info-main .first-event img {
   width: 40px;
   padding-right: 10px;
