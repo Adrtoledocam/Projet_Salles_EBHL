@@ -50,9 +50,9 @@ function loadCalendar(room) {
       roomStatus.className = isInProgress ? "occupee" : "libre";
 
       // Gestion des titres trop longs
-      const summary = first.summary;
-      if (summary.length > 38) {
-        summary.substring(0, 38) + "...";
+      let firstSummary = first.summary;
+      if (first.summary.length > 38) {
+        firstSummary = first.summary.substring(0, 38) + "...";
       }
 
       // Affichage de l'événement principal
@@ -61,7 +61,7 @@ function loadCalendar(room) {
         <div class="first-event">
            <p>
              <img src="/resources/images/meeting-b-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
-            ${summary}
+            ${firstSummary}
           </p>
           
        ${
@@ -180,10 +180,9 @@ function loadCalendar(room) {
             conflitHtml = `<span style="color: #f4f4f8; font-weight: bold; text-decoration: underline;">En cours</span>`;
           }
 
-          // Gestion des titres trop longs
-          const summary = event.summary;
-          if (summary.length > 38) {
-            summary.substring(0, 38) + "...";
+          let eventSummary = event.summary;
+          if (event.summary.length > 38) {
+            eventSummary = event.summary.substring(0, 38) + "...";
           }
 
           row.innerHTML = `
@@ -226,7 +225,7 @@ function loadCalendar(room) {
             <div class="event-info">
               <img src="/resources/images/meeting-w-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
               <p class="summary-event"> 
-                ${summary}
+                ${eventSummary}
               </p>
             </div>
 
