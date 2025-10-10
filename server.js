@@ -89,7 +89,7 @@ async function fetchDBData(events) {
     // Envoi de l'événement dans le tableau
     results.push({
       summary: e.titleEvent,
-      organizer: `${e.organizerName} ${e.organizerSurname}`,
+      organizer: `${e.organizerSurname} ${e.organizerName}`,
       start,
       end,
     });
