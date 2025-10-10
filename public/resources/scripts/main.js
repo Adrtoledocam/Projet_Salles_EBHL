@@ -51,8 +51,8 @@ function loadCalendar(room) {
 
       // Gestion des titres trop longs
       let firstSummary = first.summary;
-      if (first.summary.length > 38) {
-        firstSummary = first.summary.substring(0, 38) + "...";
+      if (first.summary.length > 32) {
+        firstSummary = first.summary.substring(0, 32) + "...";
       }
 
       // Affichage de l'événement principal
@@ -181,8 +181,8 @@ function loadCalendar(room) {
           }
 
           let eventSummary = event.summary;
-          if (event.summary.length > 38) {
-            eventSummary = event.summary.substring(0, 38) + "...";
+          if (event.summary.length > 32) {
+            eventSummary = event.summary.substring(0, 32) + "...";
           }
 
           row.innerHTML = `
