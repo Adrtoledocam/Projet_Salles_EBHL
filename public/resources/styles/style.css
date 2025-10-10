@@ -205,6 +205,12 @@ body,
   color: var(--eh-white);
 }
 
+.bottom .events .event .event-info #organizer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .bottom .events .event .event-info img {
   width: 35px;
   height: 35px;

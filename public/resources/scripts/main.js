@@ -55,7 +55,7 @@ function loadCalendar(room) {
         <div class="first-event">
            <p>
              <img src="/resources/images/meeting-b-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
-            ${first.summary}
+            ${first.summary.substring(0, 32)}
           </p>
           
        ${
@@ -216,7 +216,7 @@ function loadCalendar(room) {
             <div class="event-info">
               <img src="/resources/images/meeting-w-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
               <p class="summary-event"> 
-                ${event.summary || ""}
+                ${event.summary.substring(0, 38)}
               </p>
             </div>
 
@@ -224,8 +224,8 @@ function loadCalendar(room) {
             ${
               event.organizer && event.organizer.trim().length > 0
                 ? `<img src="/resources/images/organisateur-w-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
-                <p class="summary-event"> 
-                  ${event.organizer || ""}
+                <p id="organizer" class="summary-event"> 
+                  ${event.organizer}
                 </p>`
                 : ""
             }
