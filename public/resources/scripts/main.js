@@ -49,13 +49,19 @@ function loadCalendar(room) {
       roomStatus.textContent = isInProgress ? "Occupée" : "Libre";
       roomStatus.className = isInProgress ? "occupee" : "libre";
 
+      // Gestion des titres trop longs
+      const summary = first.summary;
+      if (summary.length > 38) {
+        summary.substring(0, 38) + "...";
+      }
+
       // Affichage de l'événement principal
       mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
            <p>
              <img src="/resources/images/meeting-b-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
-            ${first.summary.substring(0, 32)}
+            ${summary}
           </p>
           
        ${
@@ -174,9 +180,14 @@ function loadCalendar(room) {
             conflitHtml = `<span style="color: #f4f4f8; font-weight: bold; text-decoration: underline;">En cours</span>`;
           }
 
+          // Gestion des titres trop longs
+          const summary = event.summary;
+          if (summary.length > 38) {
+            summary.substring(0, 38) + "...";
+          }
+
           row.innerHTML = `
             <div class="event-info">
-
 
               ${
                 // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
@@ -208,7 +219,6 @@ function loadCalendar(room) {
             minute: "2-digit",
           })} 
           
-          
           &nbsp; 
             </p>
             </div>
@@ -216,7 +226,7 @@ function loadCalendar(room) {
             <div class="event-info">
               <img src="/resources/images/meeting-w-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
               <p class="summary-event"> 
-                ${event.summary.substring(0, 38)}
+                ${summary}
               </p>
             </div>
 
@@ -230,7 +240,6 @@ function loadCalendar(room) {
                 : ""
             }
             </div>
-
  
           `;
           // Ajout de l'événement panneau secondaire
