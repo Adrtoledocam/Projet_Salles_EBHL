@@ -265,5 +265,4 @@ loadCalendar(selectedRoom.value);
 // Mise à jour des données du calendrier chaque 5 secondes
 setInterval(() => {
   loadCalendar(selectedRoom.value);
-  document.body.requestFullscreen();
 }, 5000);

@@ -2,7 +2,12 @@ import { ROOMS_DATA } from "/controllers/roomsData.js";
 
 const select = document.getElementById("calendar-select");
 
-if (window.location.pathname.includes("/Default")) {
+if (
+  window.location.pathname.includes("/Default") ||
+  (!window.location.pathname.includes("/pga") &&
+    !window.location.pathname.includes("/ebhl") &&
+    !window.location.pathname.includes("/cdg"))
+) {
   select.removeAttribute("disabled");
 }
 
