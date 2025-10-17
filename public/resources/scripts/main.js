@@ -26,7 +26,7 @@ function loadCalendar(room) {
   axios
     .get(`/api/calendar/${site}/${room}`)
     .then((res) => {
-      const events = res.data;
+      const events = res.data.data;
 
       // Si aucun événement n'est trouvé
       if (events.length === 0) {
