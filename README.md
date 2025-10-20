@@ -9,8 +9,5 @@ Afin d’améliorer l’organisation et la communication autour de l’occupatio
 5. Démarrez l'instance node en local avec la commande `npm run dev`
 6. Profitez du site en vous rendant [ici](http://localhost:80).
 
-## Aperçu du projet (salle libre)
-<img width="670" height="399" alt="Aperçu du projet (salle libre)" src="https://github.com/user-attachments/assets/cb326dc8-e3e3-4c37-aa66-b92392cddc86" />
-
-## Aperçu du projet (salle occupée)
-<img width="670" height="399" alt="Aperçu du projet (salle occupée)" src="https://github.com/user-attachments/assets/a4c99d06-b9bb-484f-930d-024400e2047d" />
+## Aperçu du projet sur une tablette (Samsung Tab A9+ 11")
+<img width="670" height="399" alt='Aperçu du projet sur une tablette (Samsung Tab A9+ 11")' src="https://github.com/user-attachments/assets/6e9f858d-18ae-4c5f-9ba4-9a4dbdad30d6" />
