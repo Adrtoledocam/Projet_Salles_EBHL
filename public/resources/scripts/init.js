@@ -38,14 +38,14 @@ const logo = document.getElementById("site-logo");
 // Mise à jour du style et du logo en fonction du site
 switch (site) {
   case "ebhl":
-    root.style.setProperty("--main-color", "#F1AB00");
+    root.style.setProperty("--main-color", "rgb(241, 171, 0, 1)");
     logo.src = "/resources/images/ebhl.png";
     break;
   case "cdg":
-    root.style.setProperty("--main-color", "#CB0447");
+    root.style.setProperty("--main-color", "rgb(203, 4, 71, 19)");
     logo.src = "/resources/images/cdg.png";
     break;
   default:
-    root.style.setProperty("--main-color", "#003596");
+    root.style.setProperty("--main-color", "rgb(0, 53, 150, 1)");
     logo.src = "/resources/images/pga.png";
 }
