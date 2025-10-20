@@ -19,6 +19,7 @@ function setDbConfig(host) {
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
     waitForConnections: true,
+    connectTimeout: 20000,
     connectionLimit: 10,
     queueLimit: 0,
   });
