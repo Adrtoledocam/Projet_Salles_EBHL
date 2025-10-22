@@ -80,7 +80,7 @@ function loadCalendar(room) {
 
       // Gestion des titres trop longs
       let firstSummary = first.summary;
-      if (first.summary.length > 32) {
+      if (first.summary.length > 40) {
         firstSummary = first.summary.substring(0, 32) + "...";
       }
 
@@ -138,9 +138,10 @@ function loadCalendar(room) {
 
         mainInfo.innerHTML = `
         <h2 style="margin:auto;">Aucun événement aujourd'hui</h2>
-        <h2 style="width:70%;margin:auto;font-size:3rem;"><br>Prochain événement le ${new Date(
-          start
-        ).toLocaleDateString("fr-FR", {
+            
+        <h2 style="width:70%;margin:auto;font-size:3rem;"><br>Prochain événement<br>
+        <img style="width:40px;margin-right:10px;"src="/resources/images/calendrier-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
+        ${new Date(start).toLocaleDateString("fr-FR", {
           day: "2-digit",
         })} ${datefr(start)}</h2>`;
       }
@@ -227,7 +228,7 @@ function loadCalendar(room) {
           }
 
           let eventSummary = event.summary;
-          if (event.summary.length > 32) {
+          if (event.summary.length > 40) {
             eventSummary = event.summary.substring(0, 32) + "...";
           }
 
@@ -239,7 +240,7 @@ function loadCalendar(room) {
                 !conflitHtml && !conflitHtml.trim().length > 0
                   ? `
               <img src="/resources/images/calendrier-w-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
-    `
+            `
                   : `<img src="/resources/images/processing-w-64.png" alt="Deux flèches tourant en rond pour indiquer qu'un deuxième événement est en cours en même temps" draggable="false" />`
               }
 
