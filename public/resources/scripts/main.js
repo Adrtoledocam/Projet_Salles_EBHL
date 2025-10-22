@@ -19,6 +19,36 @@ setInterval(() => {
   });
 }, 2);
 
+// Fonction pour obtenir le mois en français
+function datefr(date) {
+  switch (date.getMonth()) {
+    case 0:
+      return "Janvier";
+    case 1:
+      return "Février";
+    case 2:
+      return "Mars";
+    case 3:
+      return "Avril";
+    case 4:
+      return "Mai";
+    case 5:
+      return "Juin";
+    case 6:
+      return "Juillet";
+    case 7:
+      return "Août";
+    case 8:
+      return "Septembre";
+    case 9:
+      return "Octobre";
+    case 10:
+      return "Novembre";
+    case 11:
+      return "Décembre";
+  }
+}
+
 // Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
   // Récupération de la salle depuis le fichier de données
@@ -39,7 +69,6 @@ function loadCalendar(room) {
       }
 
       const first = events[0]; // Premier événement de la liste
-
       const now = new Date();
       const start = new Date(first.start);
       const end = new Date(first.end);
@@ -56,7 +85,17 @@ function loadCalendar(room) {
       }
 
       // Affichage de l'événement principal
-      mainInfo.innerHTML = `
+      if (
+        new Date(now).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "2-digit",
+        }) ==
+        new Date(start).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "2-digit",
+        })
+      ) {
+        mainInfo.innerHTML = `
         <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
         <div class="first-event">
            <p>
@@ -64,25 +103,20 @@ function loadCalendar(room) {
             ${firstSummary}
           </p>
           
-       ${
-         // Affichage de l'organisateur de l'événement s'il existe
-         first.organizer
-           ? `
-          <p id="organizer">
-             <img src="/resources/images/organisateur-b-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
-            ${first.organizer}
-          </p>
-          `
-           : ""
-       }
+          ${
+            // Affichage de l'organisateur de l'événement s'il existe
+            first.organizer
+              ? `
+              <p id="organizer">
+                <img src="/resources/images/organisateur-b-64.png" alt="Personnage pour représenter l'organisateur de l'événement" draggable="false" />
+                ${first.organizer}
+              </p>
+              `
+              : ""
+          }
 
           <p class="timestamp">
-            <img src="/resources/images/calendrier-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
-             ${new Date(start).toLocaleDateString("fr-FR", {
-               day: "2-digit",
-               month: "2-digit",
-             })}
-            &nbsp;
+            <img src="/resources/images/hour-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
             ${start.toLocaleString([], {
               hour: "2-digit",
               minute: "2-digit",
@@ -96,8 +130,20 @@ function loadCalendar(room) {
             <p>
           </p>
 
-        </div>`;
+        </div>
+      `;
+      } else {
+        events.unshift(first);
+        events.pop();
 
+        mainInfo.innerHTML = `
+        <h2 style="margin:auto;">Aucun événement aujourd'hui</h2>
+        <h2 style="width:70%;margin:auto;font-size:3rem;"><br>Prochain événement le ${new Date(
+          start
+        ).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+        })} ${datefr(start)}</h2>`;
+      }
       if (isInProgress) {
         // Suppression de l'horloge si l'événement est en cours
         const timestamp = document.querySelector(".timestamp");
@@ -252,6 +298,8 @@ function loadCalendar(room) {
     .catch((err) => {
       console.error(err);
     });
+
+  return;
 }
 
 // Récupération du nom de la salle depuis l'URL
