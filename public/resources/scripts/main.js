@@ -138,12 +138,7 @@ function loadCalendar(room) {
 
         mainInfo.innerHTML = `
         <h2 style="margin:auto;">Aucun événement aujourd'hui</h2>
-            
-        <h2 style="width:70%;margin:auto;font-size:3rem;"><br>Prochain événement<br>
-        <img style="width:40px;margin-right:10px;"src="/resources/images/calendrier-b-64.png" alt="Calendrier pour illustrer la date de l'événement" draggable="false" />
-        ${new Date(start).toLocaleDateString("fr-FR", {
-          day: "2-digit",
-        })} ${datefr(start)}</h2>`;
+            `;
       }
       if (isInProgress) {
         // Suppression de l'horloge si l'événement est en cours
