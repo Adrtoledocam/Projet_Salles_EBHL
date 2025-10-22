@@ -137,7 +137,7 @@ function loadCalendar(room) {
         events.pop();
 
         mainInfo.innerHTML = `
-        <h2 style="margin:auto;">Aucun événement aujourd'hui</h2>
+        <h2 style="margin:auto;margin-top:15%;">Aucun événement aujourd'hui</h2>
             `;
       }
       if (isInProgress) {
