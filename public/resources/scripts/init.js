@@ -2,6 +2,12 @@ import { ROOMS_DATA } from "/controllers/roomsData.js";
 
 const select = document.getElementById("calendar-select");
 
+// Bloquer le rafraîchissement de la page
+window.addEventListener("beforeunload", (e) => {
+  e.preventDefault();
+  e.returnValue = "";
+});
+
 if (
   window.location.pathname.includes("/Default") ||
   (!window.location.pathname.includes("/pga") &&

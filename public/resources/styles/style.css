@@ -19,6 +19,13 @@
   user-select: none;
 }
 
+/* Bloquer le rafraîchissement de la page */
+html,
+body {
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
 /* Style général pour les titres et textes */
 h1,
 h2,
