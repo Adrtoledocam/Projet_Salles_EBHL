@@ -26,7 +26,5 @@ const frontendRoutes = require("./routes/frontend");
 app.use("/api", apiRoutes);
 app.use("/", frontendRoutes);
 
-// Démarrage de l'application en local
-app.listen(PORT, () => {
-  console.log(`✅ Port: ${PORT}`);
-});
+// Démarrage de l'application
+app.listen(PORT, () => {});
