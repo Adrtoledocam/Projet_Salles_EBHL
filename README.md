@@ -1,13 +1,78 @@
-# 💻 Projet affichage des événements sur des écrans
-Afin d’améliorer l’organisation et la communication autour de l’occupation de ces salles, une solution est recherchée pour permettre l’affichage, sur écran, d’un calendrier de réservation des salles. Cet affichage devra se connecter à notre serveur Exchange ainsi qu’à notre base de données Medhive pour récupérer les réservations existantes.
+# 💻 Projet d’affichage des événements sur écrans
 
-## Lancement du projet en local
-1. Téléchargez le repository en local sur votre machine
-2. Téléchargez [Node.js](https://nodejs.org/fr/download) sur votre machine
-3. Rendez vous dans le répertoire ./projet-salles
-4. Installez les dépendances du projet à l'aide de la commande `npm install`
-5. Démarrez l'instance node en local avec la commande `npm run dev`
-6. Profitez du site en vous rendant [ici](http://localhost:80).
+Ce projet a été développé pour mettre en place un **affichage dynamique de l’occupation des salles de conférences**, remplaçant le système précédent où les plannings étaient **imprimés chaque matin**.
 
-## Aperçu du projet sur une tablette (Samsung Tab A9+ 11")
-<img width="670" height="399" alt='Aperçu du projet sur une tablette (Samsung Tab A9+ 11")' src="https://github.com/user-attachments/assets/6e9f858d-18ae-4c5f-9ba4-9a4dbdad30d6" />
+Grâce à cet affichage, les utilisateurs peuvent :
+- **Consulter en temps réel le statut d’une salle** (occupée ou disponible)
+- **Mettre à jour leur réservation directement depuis leur agenda**
+
+Le système s’appuie sur **deux sources de données distinctes** :
+- Les **réservations des sites de Lausanne** et de la **Cité du Genévrier**, extraites depuis la base de données **Medhive**
+- Les **réservations du Pôle Grand Âge**, récupérées directement depuis les **calendriers Exchange**
+
+---
+
+## 🚀 Lancement du projet en local
+
+1. **Téléchargez le repository** sur votre machine (via Git ou en téléchargeant l'archive `.zip`)
+2. **Installez [Node.js](https://nodejs.org/fr/download)** (version LTS recommandée)
+3. **Ouvrez un terminal** et placez-vous dans le répertoire du projet :
+   ```bash
+   cd ./projet-salles
+   ```
+4. **Installez les dépendances** :
+   ```bash
+   npm install
+   ```
+5. **Démarrez le serveur en mode développement** :
+   ```bash
+   npm run dev
+   ```
+   > Cette commande utilise **nodemon** pour relancer automatiquement le serveur à chaque modification du code.
+
+6. **Accédez à l’application** depuis votre navigateur :  
+   [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧱 Lancement en production
+
+Pour la production, le projet utilise **[PM2](https://pm2.keymetrics.io/)** afin de :
+- Redémarrer automatiquement l’application en cas de crash
+- Gérer les processus Node.js et centraliser les logs
+- Démarrer automatiquement l’application au boot du serveur
+
+Pour lancer le projet en production, utilisez la commande suivante :
+```bash
+npm run prod
+```
+Cette commande s’appuie sur le fichier `ecosystem.config.js` pour gérer la configuration des processus PM2.
+
+---
+
+## 🛠 Scripts disponibles (package.json)
+
+| Script         | Description |
+|----------------|-------------|
+| `npm run dev`  | Démarrage du serveur en développement avec **nodemon** |
+| `npm run prod` | Démarrage ou redémarrage du serveur en production avec **PM2** |
+
+---
+
+## 📦 Dépendances principales
+
+- `express` : serveur web
+- `mysql2` : connexion à la base de données MySQL
+- `node-ical` : lecture des fichiers iCal
+- `rrule` : gestion des récurrences d'événements
+- `dotenv` : gestion des variables d'environnement
+- `helmet` : sécurité HTTP
+- `axios` : requêtes HTTP
+
+---
+
+## 👥 Auteurs
+
+- **Adrian TOLEDO**  
+- **Mateja VELICKOVIC**
+
