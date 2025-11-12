@@ -21,9 +21,9 @@ Le système s’appuie sur **deux sources de données distinctes** :
 
 1. **Téléchargez le repository** sur votre machine (via Git ou en téléchargeant l'archive `.zip`)
 2. **Installez [Node.js](https://nodejs.org/fr/download)** (version LTS recommandée)
-3. **Ouvrez un terminal** et placez-vous dans le répertoire du projet :
+3. **Placez-vous dans le répertoire du projet :
    ```bash
-   cd ./projet-salles
+   cd ./Projet_Salles_EBHL
    ```
 4. **Installez les dépendances** :
    ```bash
