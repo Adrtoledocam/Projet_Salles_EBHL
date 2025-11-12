@@ -12,6 +12,11 @@ Le système s’appuie sur **deux sources de données distinctes** :
 
 ---
 
+## 🖼️ Aperçu du rendu final
+<img width="779" height="405" alt="Tablette fixée sur un mur à côté d'une porte de salle de conférence surlaquelle on voit le programme de la salle " src="https://github.com/user-attachments/assets/7ecc3223-bf6d-4af4-a26f-d76e6ff8f410" />
+
+---
+
 ## 🚀 Lancement du projet en local
 
 1. **Téléchargez le repository** sur votre machine (via Git ou en téléchargeant l'archive `.zip`)
