@@ -19,7 +19,7 @@ async function fetchICSData(room) {
   for (const e of Object.values(data)) {
     if (e.type !== "VEVENT" || !(e.start instanceof Date)) continue;
 
-    if (/annulé/i.test(e.summary) || e.summary == "") continue;
+    if (/annulé/i.test(e.summary) || e.summary.trim() == "") continue;
     // Si l'événement est un événement récurrent on va créer toutes les occurrences
     if (e.rrule) {
       // On récupère tous les événement répétitifs d'aujourd'hui et on garde ceux qui ne sont pas encore terminés
