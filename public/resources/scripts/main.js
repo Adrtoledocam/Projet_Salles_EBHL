@@ -19,36 +19,6 @@ setInterval(() => {
   });
 }, 2);
 
-// Fonction pour obtenir le mois en français
-function datefr(date) {
-  switch (date.getMonth()) {
-    case 0:
-      return "Janvier";
-    case 1:
-      return "Février";
-    case 2:
-      return "Mars";
-    case 3:
-      return "Avril";
-    case 4:
-      return "Mai";
-    case 5:
-      return "Juin";
-    case 6:
-      return "Juillet";
-    case 7:
-      return "Août";
-    case 8:
-      return "Septembre";
-    case 9:
-      return "Octobre";
-    case 10:
-      return "Novembre";
-    case 11:
-      return "Décembre";
-  }
-}
-
 // Chargement du calendrier selon la salle sélectionnée
 function loadCalendar(room) {
   // Récupération de la salle depuis le fichier de données
