@@ -242,15 +242,28 @@ body,
   padding-right: 10px;
 }
 
-/* Style de l'heure affichée en haut à droite */
+/* Heure et date affichés en haut à droite */
+
+.time {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: end;
+  font-weight: 500;
+  justify-content: center;
+  color: rgb(65, 65, 65);
+}
+
+#date {
+  font-size: 2rem;
+  padding-bottom: 5px;
+}
+
 #clock {
   display: flex;
   justify-content: center;
+  font-size: 4rem;
   align-items: center;
   width: 15vw;
-  font-size: 4rem;
-  font-weight: 500;
-  color: rgb(65, 65, 65);
   padding-right: 10px;
 }
 
