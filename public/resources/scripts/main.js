@@ -5,12 +5,19 @@ const secondInfo = document.querySelector(".events"); // Panneau secondaire (dro
 const selectedRoom = document.getElementById("calendar-select"); // Sélecteur de salle (liste)
 const roomStatus = document.getElementById("status"); // État de la salle (libre ou occupée)
 const clock = document.getElementById("clock");
+const date = document.getElementById("date");
 
 setInterval(() => {
-  let date = new Date();
-  clock.innerHTML = date.toLocaleTimeString("fr-FR", {
+  let time = new Date();
+  clock.innerHTML = time.toLocaleTimeString("fr-FR", {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
+  });
+  let dispDate = new Date();
+  date.innerHTML = dispDate.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "short",
     hour12: false,
   });
 }, 2);
@@ -26,7 +33,7 @@ function loadCalendar(room) {
 
       // Si aucun événement n'est trouvé
       if (events.length === 0) {
-        mainInfo.innerHTML = "<h2>Aucun événement aujourd’hui</h2>";
+        mainInfo.innerHTML = "<h2>Aucune réservation aujourd'hui</h2>";
 
         // Statut de la salle
         roomStatus.textContent = "Libre";
@@ -41,13 +48,13 @@ function loadCalendar(room) {
       const isInProgress = now >= start && now <= end; // Booléen: Vérifie si l'événement est en cours
 
       // Statut de la salle
-      roomStatus.textContent = isInProgress ? "Occupée" : "Libre";
+      roomStatus.textContent = isInProgress ? `Occupée` : "Libre";
       roomStatus.className = isInProgress ? "occupee" : "libre";
 
       // Gestion des titres trop longs
       let firstSummary = first.summary;
-      if (first.summary.length > 40) {
-        firstSummary = first.summary.substring(0, 32) + "...";
+      if (first.summary.length > 45) {
+        firstSummary = first.summary.substring(0, 45) + "...";
       }
 
       // Affichage de l'événement principal
@@ -62,7 +69,9 @@ function loadCalendar(room) {
         })
       ) {
         mainInfo.innerHTML = `
-        <h2>${isInProgress ? "Événement en cours" : "Prochain événement"}</h2>
+        <h2>${
+          isInProgress ? "Réservation actuelle" : "Prochaine réservation"
+        }</h2>
         <div class="first-event">
            <p>
              <img src="/resources/images/meeting-b-64.png" alt="Pancarte pour illustrer le titre de l'événement" draggable="false" />
@@ -103,7 +112,7 @@ function loadCalendar(room) {
         events.pop();
 
         mainInfo.innerHTML = `
-        <h2 style="margin:auto;margin-top:15%;">Aucun événement aujourd'hui</h2>
+        <h2 style="margin:auto;margin-top:15%;">Aucune réservation aujourd'hui</h2>
             `;
       }
       if (isInProgress) {
@@ -145,6 +154,7 @@ function loadCalendar(room) {
           const barNumber = countdownBar.querySelector("#progress-bar-number");
           bar.style.width = percent + "%";
           barNumber.style.color = "#414141";
+          barNumber.style.fontSize = "2rem";
 
           let msLeft = end - now;
           if (msLeft < 0) msLeft = 0;
@@ -185,7 +195,7 @@ function loadCalendar(room) {
           // Gestion des conflits si un événement se produit en même temps qu'un autre
           let conflitHtml = "";
           if (now >= eventStart && now <= eventEnd) {
-            conflitHtml = `<span style="color: #f4f4f8; font-weight: bold; text-decoration: underline;">En cours</span>`;
+            conflitHtml = `<span style="color: #f4f4f8; font-weight: bold; text-decoration: underline;">En cours</span> &nbsp`;
           }
 
           let eventSummary = event.summary;
@@ -209,14 +219,24 @@ function loadCalendar(room) {
 
              ${
                // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
-               !conflitHtml && !conflitHtml.trim().length > 0
+               !conflitHtml &&
+               !conflitHtml.trim().length > 0 &&
+               new Date(event.start).toLocaleDateString("fr-FR", {
+                 day: "2-digit",
+                 month: "2-digit",
+               }) !=
+                 new Date(Date.now()).toLocaleDateString("fr-FR", {
+                   day: "2-digit",
+                   month: "2-digit",
+                 })
                  ? `
               ${new Date(event.start).toLocaleDateString("fr-FR", {
+                weekday: "short",
                 day: "2-digit",
                 month: "2-digit",
               })} &nbsp; 
             `
-                 : "&nbsp; "
+                 : " "
              }
               ${new Date(event.start).toLocaleString([], {
                 hour: "2-digit",
@@ -254,7 +274,7 @@ function loadCalendar(room) {
         });
       } else {
         // Si aucun événement n'est pas trouvé
-        secondInfo.innerHTML = "<h2>Pas d’autres événements</h2>";
+        secondInfo.innerHTML = "<h2>Aucune réservation future existante</h2>";
       }
     })
     .catch((err) => {
