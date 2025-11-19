@@ -256,14 +256,14 @@ body,
 #date {
   font-size: 2rem;
   padding-bottom: 5px;
+  margin-right: 20px;
 }
 
 #clock {
-  display: flex;
   justify-content: center;
   font-size: 4rem;
   align-items: center;
-  width: 15vw;
+  width: 13vw;
   padding-right: 10px;
 }
 
