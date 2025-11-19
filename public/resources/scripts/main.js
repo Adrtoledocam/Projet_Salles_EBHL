@@ -186,6 +186,8 @@ function loadCalendar(room) {
 
         // Suppression du premier événement, car il a déjà été affiché précédemment
         events.slice(1).forEach((event) => {
+          const tomorrow = new Date();
+          tomorrow.setDate(tomorrow.getDate() + 1);
           const row = document.createElement("div");
           row.classList.add("event");
 
@@ -221,6 +223,10 @@ function loadCalendar(room) {
                // Suppression de la date de l'événement si l'événement est un conflit afin de laisser la place au texte "En cours"
                !conflitHtml &&
                !conflitHtml.trim().length > 0 &&
+               //  Affichage de la date de l'événement si
+               // - l'événement est le jour même alors on affiche que l'heure
+               // - l'événement est le lendemain alors on affiche "dem."
+               // sinon on affiche le jour de la semaine et la date
                new Date(event.start).toLocaleDateString("fr-FR", {
                  day: "2-digit",
                  month: "2-digit",
@@ -229,14 +235,19 @@ function loadCalendar(room) {
                    day: "2-digit",
                    month: "2-digit",
                  })
-                 ? `
-              ${new Date(event.start).toLocaleDateString("fr-FR", {
-                weekday: "short",
-                day: "2-digit",
-                month: "2-digit",
-              })} &nbsp; 
-            `
-                 : " "
+                 ? new Date(event.start).toLocaleDateString("fr-FR", {
+                     weekday: "short",
+                   }) ==
+                   new Date(tomorrow).toLocaleDateString("fr-FR", {
+                     weekday: "short",
+                   })
+                   ? `dem.`
+                   : ` ${new Date(event.start).toLocaleDateString("fr-FR", {
+                       weekday: "short",
+                       day: "2-digit",
+                       month: "2-digit",
+                     })} &nbsp;`
+                 : ""
              }
               ${new Date(event.start).toLocaleString([], {
                 hour: "2-digit",
