@@ -131,6 +131,10 @@ export const ROOMS_DATA = {
     site: "cdg",
     salle: "Salle Willy Fruttiger 20-30pers",
   },
+  Salle_la_prairie: {
+    site: "cdg",
+    salle: "Salle La Prairie",
+  },
 
   // <--- PGA BEAU SITE --->
   "Salle_PGA_Beau-Site_Vignerons": {
