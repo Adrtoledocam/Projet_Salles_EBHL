@@ -304,6 +304,14 @@ selectedRoom.value = salleId;
 loadCalendar(selectedRoom.value);
 
 // Mise à jour des données du calendrier chaque 5 secondes
-setInterval(() => {
-  loadCalendar(selectedRoom.value);
-}, 60000);
+async function scheduleLoad() {
+  try {
+    await loadCalendar(selectedRoom.value);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    setTimeout(scheduleLoad, 60000);
+  }
+}
+
+scheduleLoad();
